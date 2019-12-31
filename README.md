@@ -4,3 +4,5 @@ This is the simple plugin that counts the views of the your wordpress website an
 For this repository i would like to give full credits to [AnkitaTanti](https://github.com/AnkitaTanti).
 
 Contribution is highly appriciated.
+
+### For contribution make the saperate branch.
