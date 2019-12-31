@@ -6,3 +6,4 @@ For this repository i would like to give full credits to [AnkitaTanti](https://g
 Contribution is highly appriciated.
 
 ### For contribution make the saperate branch.
+NOTE : Make sure we are Developing the Plugin.:sweat_smile:
