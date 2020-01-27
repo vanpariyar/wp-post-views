@@ -8,3 +8,7 @@ Contribution is highly appriciated.
 ### For contribution make the saperate branch.
 NOTE : Make sure we are Developing the Plugin.:sweat_smile:
 Please Don't upload Whole wordpress setup.
+
+## Features:
+- We have option to show views count in the post coloumn.
+- All views are filterd with IP address. 
