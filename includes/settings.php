@@ -12,34 +12,8 @@ class Wp_post_view_settings
 	add_action( 'admin_menu', array( 'Wp_post_view_settings','wppv_api_add_admin_menu' ) );
 
 	add_action( 'admin_init', array( 'Wp_post_view_settings','wppv_api_settings_init' ) );
-	
-	add_filter( 'manage_posts_columns', array( 'Wp_post_view_settings','wppv_posts_column_views') );
-
-	add_action( 'manage_posts_custom_column', array( 'Wp_post_view_settings','wppv_posts_custom_column_views') );
 
 	}
-
-	public static function wppv_posts_column_views( $columns ) {
-
-		$options = get_option( 'wppv_api_settings' );
-		//$options['wppv_api_text_field_0'];
-		if ( !empty($options['wppv_api_text_field_0']) ) {	
-			$columns['post_views'] = 'Views';
-		}
-	    return $columns;
-	}
-
-	public static function wppv_posts_custom_column_views( $column ) {
-		$options = get_option( 'wppv_api_settings' );
-		if ( !empty($options['wppv_api_text_field_0']) ) {
-			if ( $column === 'post_views') {
-			$view_post_meta = get_post_meta(get_the_ID(), 'entry_views', true);
-			echo $view_post_meta;
-	    	}
-		}
-	    
-	}
-
 
 	public static function wppv_api_add_admin_menu(  ) {
 	    add_options_page( 'Wp Post Views Settings', 'Wp Post Views Settings', 'manage_options', 'settings-api-page', array( 'Wp_post_view_settings','wppv_api_options_page' ) );
@@ -56,6 +30,12 @@ class Wp_post_view_settings
 	    add_settings_field(
 	        'wppv_api_text_field_0',
 	        __( 'Show post views coloumn', 'wordpress' ),array( 'Wp_post_view_settings','wppv_show_views_callback'),
+	        'wppvPlugin',
+	        'wppv_api_wppvPlugin_section'
+	    );
+	    add_settings_field(
+	        'wppv_api_text_field_1',
+	        __( 'Views filter on IP (If checked multiple views will not count From same IP)', 'wordpress' ),array( 'Wp_post_view_settings','filter_on_ip_callback'),
 	        'wppvPlugin',
 	        'wppv_api_wppvPlugin_section'
 	    );
@@ -76,15 +56,12 @@ class Wp_post_view_settings
 	    <?php
 	}
 
-	public static function wppv_api_select_field_1_render(  ) {
+	public static function filter_on_ip_callback(  ) {
 	    $options = get_option( 'wppv_api_settings' );
+	    $checkbox_val = empty($options['wppv_api_text_field_1']) ? '' : $options['wppv_api_text_field_1'] ;
 	    ?>
-	    <select name='wppv_api_settings[wppv_api_select_field_1]'>
-	        <option value='1' <?php selected( $options['wppv_api_select_field_1'], 1 ); ?>>Option 1</option>
-	        <option value='2' <?php selected( $options['wppv_api_select_field_1'], 2 ); ?>>Option 2</option>
-	    </select>
-
-	<?php
+	    <input type='checkbox' name='wppv_api_settings[wppv_api_text_field_1]' value="1" <?php checked( 1, $checkbox_val, true ); ?>>
+	    <?php
 	}
 
 	public static function wppv_api_settings_section_callback(  ) {
