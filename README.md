@@ -9,5 +9,5 @@ Contribution is highly appriciated.
 NOTE : Make sure we are Developing the Plugin.:sweat_smile:
 
 ## Features:
--We have option to show views count in the post coloumn.
--All views are filterd with IP address. 
+- We have option to show views count in the post coloumn.
+- All views are filterd with IP address. 
