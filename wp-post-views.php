@@ -4,7 +4,7 @@
  *
  * @package           WP Post Views
  * @author            Ronak J Vanpariya
- * @copyright         Creole Studios
+ * @copyright         Ronak J Vanpariya
  * @license           GPL-2.0-or-later
  *
  * @wordpress-plugin
@@ -45,25 +45,43 @@ if (!defined('WP_POST_VIEW_PLUGIN_PATH')) {
 
 require_once (WP_POST_VIEW_PLUGIN_PATH . '/includes/settings.php');
 
+register_activation_hook( __FILE__, array('Wp_post_view_settings','wppv_activation_hook') );
 
 /**
  * MAIN CLASS
  */
-class Post_Views 
+class WP_Post_Views 
 {
-	private $stored_ip_addresses;
-	private $post_id;
-
 	function __construct()
 	{
 		add_action( 'wp_head', array( $this , 'counter'), 10, 1 );
+		add_filter( 'manage_posts_columns', array( $this,'wppv_posts_column_views') );
+		add_action( 'manage_posts_custom_column', array( $this,'wppv_posts_custom_column_views') );
 		Wp_post_view_settings::settings_init();
 	}
-	
-	
-	// add_action( , $function_to_add, 10, 1 );
 
-	function get_ip_address() 
+	public function wppv_posts_column_views( $columns ) {
+
+		$options = get_option( 'wppv_api_settings' );
+		//$options['wppv_api_text_field_0'];
+		if ( !empty($options['wppv_api_text_field_0']) ) {	
+			$columns['post_views'] = 'Views';
+		}
+	    return $columns;
+	}
+
+	public function wppv_posts_custom_column_views( $column ) {
+		$options = get_option( 'wppv_api_settings' );
+		if ( !empty($options['wppv_api_text_field_0']) ) {
+			if ( $column === 'post_views') {
+			$view_post_meta = get_post_meta(get_the_ID(), 'entry_views', true);
+			echo $view_post_meta;
+	    	}
+		}
+	    
+	}
+
+	public function get_ip_address() 
 	{
 	    // check for shared internet/ISP IP
 	    if (!empty($_SERVER['HTTP_CLIENT_IP']) && validate_ip($_SERVER['HTTP_CLIENT_IP']))
@@ -89,7 +107,7 @@ class Post_Views
 	    return $_SERVER['REMOTE_ADDR'];
 	}
 
-	function validate_ip($ip) {
+	public function validate_ip($ip) {
 	     if (filter_var($ip, FILTER_VALIDATE_IP, 
 	                         FILTER_FLAG_IPV4 | 
 	                         FILTER_FLAG_IPV6 |
@@ -99,37 +117,43 @@ class Post_Views
 	    return true;
 	}
 
-	function counter(){
-		$stored_ip_addresses = get_post_meta(get_the_ID(),'view_ip',true);
-		$new_viewed_count = 0;
-		if($stored_ip_addresses)
-		{
-			if(sizeof($stored_ip_addresses))
-			{
-			  $current_ip = $this->get_ip_address();
-			  if(!in_array($current_ip, $stored_ip_addresses))
-			  {
-			    $meta_key         = 'entry_views';
-			    $view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);
-			    $new_viewed_count = $view_post_meta + 1;
-			    update_post_meta(get_the_ID(), $meta_key, $new_viewed_count);
-			    $stored_ip_addresses[] = $current_ip;
-			    update_post_meta(get_the_ID(),'view_ip',$stored_ip_addresses);
-			  }
+	public function counter(){
+		global $post;
+		$options = get_option( 'wppv_api_settings' );
+		if(@in_array($post->post_type , @$options['wppv_api_text_checkbox_1'])){
+			if ( !empty($options['wppv_api_text_field_1']) ) {
+				
+				$stored_ip_addresses = get_post_meta(get_the_ID(),'view_ip',true);
+				$new_viewed_count = 0;
+				if($stored_ip_addresses)
+				{
+					if(sizeof($stored_ip_addresses))
+					{
+					$current_ip = $this->get_ip_address();
+					if(!in_array($current_ip, $stored_ip_addresses))
+					{
+						$meta_key         = 'entry_views';
+						$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);
+						$new_viewed_count = $view_post_meta + 1;
+						update_post_meta(get_the_ID(), $meta_key, $new_viewed_count);
+						$stored_ip_addresses[] = $current_ip;
+						update_post_meta(get_the_ID(),'view_ip',$stored_ip_addresses);
+					}
+					}
+				}
 			}
-		}
-		else {
-			$meta_key         = 'entry_views';
-			$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);	
-			$new_viewed_count = $view_post_meta + 1;
-			update_post_meta(get_the_ID(), $meta_key, $new_viewed_count);
-			$ip_arr[] = $this->get_ip_address();
-			update_post_meta(get_the_ID(),'view_ip',$ip_arr);
+			else {
+				$meta_key         = 'entry_views';
+				$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);	
+				$new_viewed_count = $view_post_meta + 1;
+				update_post_meta(get_the_ID(), $meta_key, $new_viewed_count);
+				$ip_arr[] = $this->get_ip_address();
+				update_post_meta(get_the_ID(),'view_ip',$ip_arr);
+			}
 		}
 
 	}
-
 	 
 }
 
-$post_view = new Post_Views();
+$post_view = new WP_Post_Views();
