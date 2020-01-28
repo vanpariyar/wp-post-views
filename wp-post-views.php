@@ -4,7 +4,7 @@
  *
  * @package           WP Post Views
  * @author            Ronak J Vanpariya
- * @copyright         Creole Studios
+ * @copyright         Ronak J Vanpariya
  * @license           GPL-2.0-or-later
  *
  * @wordpress-plugin
@@ -45,14 +45,13 @@ if (!defined('WP_POST_VIEW_PLUGIN_PATH')) {
 
 require_once (WP_POST_VIEW_PLUGIN_PATH . '/includes/settings.php');
 
+register_activation_hook( __FILE__, array('Wp_post_view_settings','wppv_activation_hook') );
 
 /**
  * MAIN CLASS
  */
-class Post_Views 
+class WP_Post_Views 
 {
-	
-
 	function __construct()
 	{
 		add_action( 'wp_head', array( $this , 'counter'), 10, 1 );
@@ -60,7 +59,6 @@ class Post_Views
 		add_action( 'manage_posts_custom_column', array( $this,'wppv_posts_custom_column_views') );
 		Wp_post_view_settings::settings_init();
 	}
-	
 
 	public function wppv_posts_column_views( $columns ) {
 
@@ -82,7 +80,6 @@ class Post_Views
 		}
 	    
 	}
-	// add_action( , $function_to_add, 10, 1 );
 
 	public function get_ip_address() 
 	{
@@ -121,40 +118,42 @@ class Post_Views
 	}
 
 	public function counter(){
+		global $post;
 		$options = get_option( 'wppv_api_settings' );
-		if ( !empty($options['wppv_api_text_field_1']) ) {
-			
-			$stored_ip_addresses = get_post_meta(get_the_ID(),'view_ip',true);
-			$new_viewed_count = 0;
-			if($stored_ip_addresses)
-			{
-				if(sizeof($stored_ip_addresses))
+		if(@in_array($post->post_type , @$options['wppv_api_text_checkbox_1'])){
+			if ( !empty($options['wppv_api_text_field_1']) ) {
+				
+				$stored_ip_addresses = get_post_meta(get_the_ID(),'view_ip',true);
+				$new_viewed_count = 0;
+				if($stored_ip_addresses)
 				{
-				  $current_ip = $this->get_ip_address();
-				  if(!in_array($current_ip, $stored_ip_addresses))
-				  {
-				    $meta_key         = 'entry_views';
-				    $view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);
-				    $new_viewed_count = $view_post_meta + 1;
-				    update_post_meta(get_the_ID(), $meta_key, $new_viewed_count);
-				    $stored_ip_addresses[] = $current_ip;
-				    update_post_meta(get_the_ID(),'view_ip',$stored_ip_addresses);
-				  }
+					if(sizeof($stored_ip_addresses))
+					{
+					$current_ip = $this->get_ip_address();
+					if(!in_array($current_ip, $stored_ip_addresses))
+					{
+						$meta_key         = 'entry_views';
+						$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);
+						$new_viewed_count = $view_post_meta + 1;
+						update_post_meta(get_the_ID(), $meta_key, $new_viewed_count);
+						$stored_ip_addresses[] = $current_ip;
+						update_post_meta(get_the_ID(),'view_ip',$stored_ip_addresses);
+					}
+					}
 				}
 			}
-		}
-		else {
-			$meta_key         = 'entry_views';
-			$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);	
-			$new_viewed_count = $view_post_meta + 1;
-			update_post_meta(get_the_ID(), $meta_key, $new_viewed_count);
-			$ip_arr[] = $this->get_ip_address();
-			update_post_meta(get_the_ID(),'view_ip',$ip_arr);
+			else {
+				$meta_key         = 'entry_views';
+				$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);	
+				$new_viewed_count = $view_post_meta + 1;
+				update_post_meta(get_the_ID(), $meta_key, $new_viewed_count);
+				$ip_arr[] = $this->get_ip_address();
+				update_post_meta(get_the_ID(),'view_ip',$ip_arr);
+			}
 		}
 
 	}
-
 	 
 }
 
-$post_view = new Post_Views();
+$post_view = new WP_Post_Views();
