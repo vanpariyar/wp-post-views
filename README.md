@@ -11,4 +11,13 @@ Please Don't upload Whole wordpress setup.
 
 ## Features:
 - We have option to show views count in the post coloumn.
-- All views are filterd with IP address. 
+- (You can disable this)All views are filterd with IP address. To just make sure get right count
+-Support for the Custom post type by selecting menually in settings.
+
+INSTALLATION :
+
+1) Upload the plugin in to your wp-content > Plugins folder
+2) You can change plugin settings in Admin panel > Settings > Wp Post View Settings
+3) There are some options are by default selected for you but you can Change it. 
+
+That's it Thanks.
