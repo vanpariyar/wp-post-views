@@ -122,7 +122,7 @@ class WP_Post_Views
 
 	public function counter(){
 		global $post;
-		$stored_ip_addresses = '';
+		$stored_ip_addresses = 0;
 		$options = get_option( 'wppv_api_settings' );
 		$selected_type = array();
 		isset($options['wppv_api_post_checkbox_1']) ? $selected_type = $options['wppv_api_post_checkbox_1'] : '';
