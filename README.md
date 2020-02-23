@@ -2,7 +2,8 @@
 
 use Docker To use this Plugin setup
 
-```$ git clone https://github.com/vanpariyar/wp-post-views.git
+```
+   $ git clone https://github.com/vanpariyar/wp-post-views.git
    $ cd wp-post-views
    $ docker-compose up -d
 ```
