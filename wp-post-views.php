@@ -151,7 +151,10 @@ class WP_Post_Views
 			
 			else {
 				$meta_key         = 'entry_views';
-				$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);	
+				$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);
+				if( ! is_int($view_post_meta) ){
+					$view_post_meta = 0;
+				}	
 				$new_viewed_count = $view_post_meta + 1;
 				update_post_meta(get_the_ID(), $meta_key, $new_viewed_count);
 				$ip_arr[] = $this->get_ip_address();
