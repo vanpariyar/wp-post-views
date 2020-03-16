@@ -56,13 +56,16 @@ class WP_Post_Views
 	{
 		add_action( 'wp_head', array( $this , 'counter'), 10, 1 );
 		add_filter( 'manage_posts_columns', array( $this,'wppv_posts_column_views') );
+		add_filter( 'manage_pages_columns', array( $this,'wppv_posts_column_views') );
 		add_action( 'manage_posts_custom_column', array( $this,'wppv_posts_custom_column_views') );
+		add_action( 'manage_pages_custom_column', array( $this,'wppv_posts_custom_column_views') );
 		Wp_post_view_settings::settings_init();
 	}
 
 	public function wppv_posts_column_views( $columns ) {
 
 		$options = get_option( 'wppv_api_settings' );
+		
 		//$options['wppv_api_text_field_0'];
 		if ( !empty($options['wppv_api_text_field_0']) ) {	
 			$columns['post_views'] = 'Views';
@@ -74,8 +77,8 @@ class WP_Post_Views
 		$options = get_option( 'wppv_api_settings' );
 		if ( !empty($options['wppv_api_text_field_0']) ) {
 			if ( $column === 'post_views') {
-			$view_post_meta = get_post_meta(get_the_ID(), 'entry_views', true);
-			echo $view_post_meta;
+				$view_post_meta = get_post_meta(get_the_ID(), 'entry_views', true);
+				echo $view_post_meta;
 	    	}
 		}
 	    
@@ -119,16 +122,20 @@ class WP_Post_Views
 
 	public function counter(){
 		global $post;
+		$stored_ip_addresses = '';
 		$options = get_option( 'wppv_api_settings' );
-		if(@in_array($post->post_type , @$options['wppv_api_text_checkbox_1'])){
+		$selected_type = array();
+		isset($options['wppv_api_post_checkbox_1']) ? $selected_type = $options['wppv_api_post_checkbox_1'] : '';
+		if(in_array($post->post_type , $selected_type)){
 			if ( !empty($options['wppv_api_text_field_1']) ) {
-				
 				$stored_ip_addresses = get_post_meta(get_the_ID(),'view_ip',true);
-				$new_viewed_count = 0;
-				if($stored_ip_addresses)
+			}
+
+			$new_viewed_count = 0;
+			if($stored_ip_addresses)
+			{
+				if(sizeof($stored_ip_addresses))
 				{
-					if(sizeof($stored_ip_addresses))
-					{
 					$current_ip = $this->get_ip_address();
 					if(!in_array($current_ip, $stored_ip_addresses))
 					{
@@ -139,9 +146,9 @@ class WP_Post_Views
 						$stored_ip_addresses[] = $current_ip;
 						update_post_meta(get_the_ID(),'view_ip',$stored_ip_addresses);
 					}
-					}
 				}
 			}
+			
 			else {
 				$meta_key         = 'entry_views';
 				$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);	
