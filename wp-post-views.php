@@ -13,9 +13,9 @@
  * Description:       WP Post Views.
  * Version:           1.0
  * Requires at least: 5.0
- * Requires PHP:      7.0
+ * Requires PHP:      5.0
  * Author:            Ronak J Vanpariya
- * Author URI:        https://example.com
+ * Author URI:        https://vanpariyar.github.io
  * Text Domain:       wp-post-views
  * License:           GPL v2 or later
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
@@ -122,7 +122,7 @@ class WP_Post_Views
 
 	public function counter(){
 		global $post;
-		$stored_ip_addresses = '';
+		$stored_ip_addresses = 0;
 		$options = get_option( 'wppv_api_settings' );
 		$selected_type = array();
 		isset($options['wppv_api_post_checkbox_1']) ? $selected_type = $options['wppv_api_post_checkbox_1'] : '';
@@ -151,7 +151,10 @@ class WP_Post_Views
 			
 			else {
 				$meta_key         = 'entry_views';
-				$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);	
+				$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);
+				if( ! is_int($view_post_meta) ){
+					$view_post_meta = 0;
+				}	
 				$new_viewed_count = $view_post_meta + 1;
 				update_post_meta(get_the_ID(), $meta_key, $new_viewed_count);
 				$ip_arr[] = $this->get_ip_address();
