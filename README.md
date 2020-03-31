@@ -1,6 +1,6 @@
 # wp-post-views
 
-use Docker To use this Plugin setup
+use Docker To use this Plugin setup. (Not Compulasory)
 
 ```
    $ git clone https://github.com/vanpariyar/wp-post-views.git

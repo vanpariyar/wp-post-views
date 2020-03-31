@@ -34,3 +34,14 @@ Wordpress post views counter counts the view of your Built in post type and Cust
 2. screenshot-2
 3. screenshot-3
 4. screenshot-4
+
+== Changelog ==
+
+= 1.1 - 23/02/2020 =
+- Enhancement: Fix the error when WP_DEBUG is true.
+
+= 1.0 =
+- Innitial: First Version
+
+== Upgrade Notice ==
+Please update Your plugin for better performance.
