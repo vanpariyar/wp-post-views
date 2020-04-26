@@ -16,7 +16,7 @@
  * Requires PHP:      5.0
  * Author:            Ronak J Vanpariya
  * Author URI:        https://vanpariyar.github.io
- * Text Domain:       wp-post-views
+ * Text Domain:       wppv
  * License:           GPL v2 or later
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -30,7 +30,7 @@
 
 // Make sure we don't expose any info if called directly
 if ( !function_exists( 'add_action' ) ) {
-	echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
+	echo __('Hi there!  I\'m just a plugin, not much I can do when called directly.', 'wppv');
 	exit;
 }
 
