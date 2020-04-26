@@ -11,7 +11,7 @@
  * Plugin Name:       WP Post Views
  * Plugin URI:        https://github.com/vanpariyar/wp-post-views
  * Description:       WP Post Views.
- * Version:           1.0
+ * Version:           1.2
  * Requires at least: 5.0
  * Requires PHP:      5.0
  * Author:            Ronak J Vanpariya
@@ -44,6 +44,8 @@ if (!defined('WP_POST_VIEW_PLUGIN_PATH')) {
 }
 
 require_once (WP_POST_VIEW_PLUGIN_PATH . '/includes/settings.php');
+
+require_once (WP_POST_VIEW_PLUGIN_PATH . '/includes/shortcodes.php');
 
 register_activation_hook( __FILE__, array('Wp_post_view_settings','wppv_activation_hook') );
 
@@ -129,36 +131,27 @@ class WP_Post_Views
 		if(in_array($post->post_type , $selected_type)){
 			if ( !empty($options['wppv_api_text_field_1']) ) {
 				$stored_ip_addresses = get_post_meta(get_the_ID(),'view_ip',true);
-			}
-
-			$new_viewed_count = 0;
-			if($stored_ip_addresses)
-			{
-				if(sizeof($stored_ip_addresses))
+				if($stored_ip_addresses)
 				{
-					$current_ip = $this->get_ip_address();
-					if(!in_array($current_ip, $stored_ip_addresses))
+					if(count($stored_ip_addresses))
 					{
-						$meta_key         = 'entry_views';
-						$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);
-						$new_viewed_count = $view_post_meta + 1;
-						update_post_meta(get_the_ID(), $meta_key, $new_viewed_count);
-						$stored_ip_addresses[] = $current_ip;
-						update_post_meta(get_the_ID(),'view_ip',$stored_ip_addresses);
+						$current_ip = $this->get_ip_address();
+						if(!in_array($current_ip, $stored_ip_addresses))
+						{
+							$meta_key         = 'entry_views';
+							$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);
+							$new_viewed_count = intval($view_post_meta) + 1;
+							update_post_meta(get_the_ID(), $meta_key, $new_viewed_count);
+							$stored_ip_addresses[] = $current_ip;
+							update_post_meta(get_the_ID(),'view_ip',$stored_ip_addresses);
+						}
 					}
 				}
-			}
-			
-			else {
+			} else {
 				$meta_key         = 'entry_views';
 				$view_post_meta   = get_post_meta(get_the_ID(), $meta_key, true);
-				if( ! is_int($view_post_meta) ){
-					$view_post_meta = 0;
-				}	
-				$new_viewed_count = $view_post_meta + 1;
+				$new_viewed_count = intval($view_post_meta) + 1;
 				update_post_meta(get_the_ID(), $meta_key, $new_viewed_count);
-				$ip_arr[] = $this->get_ip_address();
-				update_post_meta(get_the_ID(),'view_ip',$ip_arr);
 			}
 		}
 

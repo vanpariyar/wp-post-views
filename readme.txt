@@ -3,7 +3,7 @@ Contributors: vanpariyar, ankitatanti, Brijeshdhanani,
 Tags: post views, count wordpress site views, show post views, post view counter, WP Post Views, post view count based on ip  
 Requires at least: 4.0
 Requires PHP: 5.3
-Tested up to: 5.3.2
+Tested up to: 5.4.0
 Stable tag: 1.7.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -19,6 +19,15 @@ Wordpress post views counter counts the view of your Built in post type and Cust
 * Option to filter views on IP address to get accurate post count.
 * Option to select the custom post type.
 
+### How to Get Post Count in Frontend
+
+Use this shortcode.
+
+[WPPV-TOTAL-VIEWS] 
+
+### Tutorial
+
+[youtube https://youtu.be/11NH5xOBs68]
 
 == Installation ==
 
@@ -37,6 +46,10 @@ Wordpress post views counter counts the view of your Built in post type and Cust
 
 == Changelog ==
 
+= 1.2 - 26/04/2020 =
+- Enhancement: Fix the Views Count.
+- Features: Added The Shortcode For Frontend Users.  
+
 = 1.1 - 23/02/2020 =
 - Enhancement: Fix the error when WP_DEBUG is true.
 
@@ -45,3 +58,5 @@ Wordpress post views counter counts the view of your Built in post type and Cust
 
 == Upgrade Notice ==
 Please update Your plugin for better performance.
+
+
