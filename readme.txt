@@ -47,6 +47,9 @@ Use this shortcode.
 == Changelog ==
 
 = 1.2 - 26/04/2020 =
+- Enhancement: Text Domain Change.
+
+= 1.2 - 26/04/2020 =
 - Enhancement: Fix the Views Count.
 - Features: Added The Shortcode For Frontend Users.  
 
