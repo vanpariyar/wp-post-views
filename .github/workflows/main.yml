@@ -1,0 +1,19 @@
+name: Deploy
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: WordPress Plugin Deploy
+      uses: rtCamp/action-wordpress-org-plugin-deploy@master
+      env:
+        #CUSTOM_COMMAND: ''
+        #CUSTOM_PATH: ''
+        EXCLUDE_LIST: docker-compose.yml,README.md,_config.yml
+        SLUG: wp-post-views
+        WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
+        WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
