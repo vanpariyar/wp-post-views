@@ -11,7 +11,7 @@
  * Plugin Name:       WP Post Views
  * Plugin URI:        https://github.com/vanpariyar/wp-post-views
  * Description:       WP Post Views.
- * Version:           1.2
+ * Version:           1.3
  * Requires at least: 5.0
  * Requires PHP:      5.0
  * Author:            Ronak J Vanpariya
