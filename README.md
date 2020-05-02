@@ -1,3 +1,5 @@
+![Deploy](https://github.com/vanpariyar/wp-post-views/workflows/Deploy/badge.svg)
+
 # wp-post-views
 
 use Docker To use this Plugin setup. (Not Compulasory)
