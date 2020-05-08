@@ -19,6 +19,9 @@ For this repository i would like to give full credits to [AnkitaTanti](https://g
 
 Contribution is highly appriciated.
 
+![banner-wp-post-views](https://user-images.githubusercontent.com/26689210/81412482-8e17c880-9161-11ea-86cc-60e2c1f3fa9a.png)
+
+
 ### For contribution make the saperate branch.
 NOTE : Make sure we are Developing the Plugin.:sweat_smile:
 Please Don't upload Whole wordpress setup.
