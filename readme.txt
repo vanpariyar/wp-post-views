@@ -4,7 +4,7 @@ Tags: post views, count wordpress site views, show post views, post view counter
 Requires at least: 4.0
 Requires PHP: 5.3
 Tested up to: 5.6.0
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,7 +46,10 @@ Use this shortcode.
 
 == Changelog ==
 
-= 1.2 - 26/04/2020 =
+= 1.4 - 15/12/2020 =
+- Enhancement: Text Domain Change.
+
+= 1.3 - 26/04/2020 =
 - Enhancement: Text Domain Change.
 
 = 1.2 - 26/04/2020 =
