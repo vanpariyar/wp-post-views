@@ -3,7 +3,7 @@ Contributors: vanpariyar, ankitatanti, Brijeshdhanani,
 Tags: post views, count wordpress site views, show post views, post view counter, WP Post Views, post view count based on ip  
 Requires at least: 5.0
 Requires PHP: 5.3
-Tested up to: 5.7
+Tested up to: 5.8
 Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
