@@ -1,6 +1,6 @@
 <?php
 
-add_action( 'wp', 'wppv_add_custom_shortcode' );
+add_action( 'init', 'wppv_add_custom_shortcode' );
 function wppv_add_custom_shortcode() {
 	/**
 	 * @param $post which is Post id ( Optional )

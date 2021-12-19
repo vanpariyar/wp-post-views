@@ -11,7 +11,7 @@
  * Plugin Name:       WP Post Views
  * Plugin URI:        https://github.com/vanpariyar/wp-post-views
  * Description:       WP Post Views.
- * Version:           1.7
+ * Version:           1.8
  * Requires at least: 5.0
  * Requires PHP:      5.3
  * Author:            Ronak J Vanpariya
@@ -89,24 +89,24 @@ class WP_Post_Views
 	public function get_ip_address() 
 	{
 	    // check for shared internet/ISP IP
-	    if (!empty($_SERVER['HTTP_CLIENT_IP']) && validate_ip($_SERVER['HTTP_CLIENT_IP']))
+	    if (!empty($_SERVER['HTTP_CLIENT_IP']) && $this->validate_ip($_SERVER['HTTP_CLIENT_IP']))
 	        return $_SERVER['HTTP_CLIENT_IP'];
 	    // check for IPs passing through proxies
 	    if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
 	        // check if multiple ips exist in var
 	        $iplist = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
 	        foreach ($iplist as $ip) {
-	            if (validate_ip($ip))
+	            if ($this->validate_ip($ip))
 	                return $ip;
 	        }
 	    }
-	    if (!empty($_SERVER['HTTP_X_FORWARDED']) && validate_ip($_SERVER['HTTP_X_FORWARDED']))
+	    if (!empty($_SERVER['HTTP_X_FORWARDED']) && $this->validate_ip($_SERVER['HTTP_X_FORWARDED']))
 	        return $_SERVER['HTTP_X_FORWARDED'];
-	    if (!empty($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']) && validate_ip($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']))
+	    if (!empty($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']) && $this->validate_ip($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']))
 	        return $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'];
-	    if (!empty($_SERVER['HTTP_FORWARDED_FOR']) && validate_ip($_SERVER['HTTP_FORWARDED_FOR']))
+	    if (!empty($_SERVER['HTTP_FORWARDED_FOR']) && $this->validate_ip($_SERVER['HTTP_FORWARDED_FOR']))
 	        return $_SERVER['HTTP_FORWARDED_FOR'];
-	    if (!empty($_SERVER['HTTP_FORWARDED']) && validate_ip($_SERVER['HTTP_FORWARDED']))
+	    if (!empty($_SERVER['HTTP_FORWARDED']) && $this->validate_ip($_SERVER['HTTP_FORWARDED']))
 	        return $_SERVER['HTTP_FORWARDED'];
 	    // return unreliable ip since all else failed
 	    return $_SERVER['REMOTE_ADDR'];
