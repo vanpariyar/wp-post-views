@@ -17,6 +17,7 @@
  * Author:            Ronak J Vanpariya
  * Author URI:        https://vanpariyar.github.io
  * Text Domain:       wppv
+ * Domain Path: 	  /languages
  * License:           GPL v2 or later
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -56,12 +57,17 @@ class WP_Post_Views
 {
 	function __construct()
 	{
+		add_action( 'init', array( $this ,'load_textdomain' ) ); 
 		add_action( 'wp_head', array( $this , 'counter'), 10, 1 );
 		add_filter( 'manage_posts_columns', array( $this,'wppv_posts_column_views') );
 		add_filter( 'manage_pages_columns', array( $this,'wppv_posts_column_views') );
 		add_action( 'manage_posts_custom_column', array( $this,'wppv_posts_custom_column_views') );
 		add_action( 'manage_pages_custom_column', array( $this,'wppv_posts_custom_column_views') );
 		Wp_post_view_settings::settings_init();
+	}
+
+	function load_textdomain() {
+		load_plugin_textdomain( 'wppv', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 
 	public function wppv_posts_column_views( $columns ) {
@@ -128,7 +134,8 @@ class WP_Post_Views
 		$options = get_option( 'wppv_api_settings' );
 		$selected_type = array();
 		isset($options['wppv_api_post_checkbox_1']) ? $selected_type = $options['wppv_api_post_checkbox_1'] : '';
-		if(in_array($post->post_type , $selected_type)){
+		
+		if( is_object($post) && in_array($post->post_type , $selected_type)){
 			if ( !empty($options['wppv_api_text_field_1']) ) {
 				$stored_ip_addresses = get_post_meta(get_the_ID(),'view_ip',true);
 

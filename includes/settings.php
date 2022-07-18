@@ -29,7 +29,7 @@ class Wp_post_view_settings
 	}
 
 	public static function wppv_api_add_admin_menu(  ) {
-	    add_options_page( 'Wp Post Views Settings', 'Wp Post Views Settings', 'manage_options', 'settings-api-page', array( 'Wp_post_view_settings','wppv_api_options_page' ) );
+	    add_options_page( 'Wp Post Views Settings', __('Wp Post Views Settings', 'wppv'), 'manage_options', 'settings-api-page', array( 'Wp_post_view_settings','wppv_api_options_page' ) );
 	}
 
 	public static function wppv_api_settings_init(  ) {
@@ -105,7 +105,7 @@ class Wp_post_view_settings
 	public static function wppv_api_options_page(  ) {
 	    ?>
 	    <form action='options.php' method='post'>
-	        <h2>Wp post View All Settings Admin Page</h2>
+	        <h2><?php _e("Wp post View All Settings Admin Page", 'wppv'); ?></h2>
 	        <?php
 	        settings_fields( 'wppvPlugin' );
 	        do_settings_sections( 'wppvPlugin' );

@@ -3,8 +3,8 @@ Contributors: vanpariyar, ankitatanti, Brijeshdhanani,
 Tags: post views, count wordpress site views, show post views, post view counter, WP Post Views, post view count based on ip  
 Requires at least: 5.0
 Requires PHP: 5.3
-Tested up to: 5.8
-Stable tag: 1.9
+Tested up to: 6.0
+Stable tag: 1.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,10 @@ Use this shortcode.
 
 [youtube https://youtu.be/11NH5xOBs68]
 
+### Development
+* Development happening on GitHub :- https://github.com/vanpariyar/wp-post-views
+* Create issue on the GitHub OR Pull request for new feature when new tag added it will automatically deployed.
+
 == Installation ==
 
 1. Install the plugin either via the WordPress.org plugin directory, or by uploading the files to your server (in the /wp-content/plugins/ directory).
@@ -45,6 +49,12 @@ Use this shortcode.
 4. screenshot-4
 
 == Changelog ==
+
+= 1.10 - 18/07/2022 =
+- Version Bump to support 6.0
+- Added ru_RU ( Russian Translation )
+- fixed https://github.com/vanpariyar/wp-post-views/issues/17
+- https://github.com/vanpariyar/wp-post-views/issues/16
 
 = 1.9 - 23/01/2022 =
 - Version Bump to support 5.9
