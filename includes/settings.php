@@ -18,7 +18,7 @@ class Wp_post_view_settings
 		if(empty(get_option( 'wppv_api_settings' ))){
 			$options = array(
 				'wppv_api_text_field_0' => '1' ,
-				'wppv_api_text_field_1' => '1', 
+				'wppv_api_text_field_1' => '0', 
 				'wppv_api_post_checkbox_1'=> array(
 					'post' => 'post',
 					'page' => 'page'
