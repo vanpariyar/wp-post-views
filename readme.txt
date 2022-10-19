@@ -4,7 +4,7 @@ Tags: post views, count wordpress site views, show post views, post view counter
 Requires at least: 5.0
 Requires PHP: 5.3
 Tested up to: 6.0
-Stable tag: 1.10
+Stable tag: 1.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,6 +24,11 @@ Wordpress post views counter counts the view of your Built in post type and Cust
 Use this shortcode.
 
 [WPPV-TOTAL-VIEWS] 
+
+
+TO get site wide count of your post type ( Refresh Hourly due to performance reason ).
+[WPPV-TOTAL-VIEWS-PER-POST-TYPE post_type="post"]
+
 
 ### Tutorial
 
