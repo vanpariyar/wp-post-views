@@ -11,7 +11,7 @@
  * Plugin Name:       WP Post Views
  * Plugin URI:        https://github.com/vanpariyar/wp-post-views
  * Description:       WP Post Views.
- * Version:           1.11ß
+ * Version:           1.11
  * Requires at least: 5.0
  * Requires PHP:      5.3
  * Author:            Ronak J Vanpariya
@@ -20,13 +20,6 @@
  * Domain Path: 	  /languages
  * License:           GPL v2 or later
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
-
- WP Post Views is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or any later version.
- 
- WP Post Views is distributed in the hope that it will be useful,but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
- 
- You should have received a copy of the GNU General Public License along with WP Post Views. If not, see  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
-
 */
 
 // Make sure we don't expose any info if called directly
