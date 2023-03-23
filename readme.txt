@@ -3,8 +3,8 @@ Contributors: vanpariyar, ankitatanti, Brijeshdhanani, piyushmultidots
 Tags: post views, count wordpress site views, show post views, post view counter, WP Post Views, post view count based on ip  
 Requires at least: 5.0
 Requires PHP: 5.3
-Tested up to: 6.1
-Stable tag: 1.11
+Tested up to: 6.2
+Stable tag: 1.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,9 @@ TO get site wide count of your post type ( Refresh Hourly due to performance rea
 4. screenshot-4
 
 == Changelog ==
+
+= 1.9 - 23/01/2022 =
+- Version Bump to support 6.2
 
 = 1.11 - 19/10/2022 =
 - Introduction of the new shortcode
