@@ -4,9 +4,10 @@ Tags: post views, count wordpress site views, show post views, post view counter
 Requires at least: 5.0
 Requires PHP: 5.3
 Tested up to: 6.2
-Stable tag: 1.12
+Stable tag: 1.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Donate link: https://paypal.me/vanpariyar
 
 Wordpress Post views counter
 
@@ -55,7 +56,11 @@ TO get site wide count of your post type ( Refresh Hourly due to performance rea
 
 == Changelog ==
 
-= 1.9 - 23/01/2022 =
+= 1.13 - 16/06/2023 =
+- Version Bump to 1.13
+- Merged new changes for PHPCS and PHPCBF. Thanks @kajalgohel for Contributions
+
+= 1.12 - 23/01/2023 =
 - Version Bump to support 6.2
 
 = 1.11 - 19/10/2022 =
@@ -97,6 +102,4 @@ TO get site wide count of your post type ( Refresh Hourly due to performance rea
 - Innitial: First Version
 
 == Upgrade Notice ==
-Please update Your plugin for better performance.
-
-
+Please update Your plugin for better performance and new features.
