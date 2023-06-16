@@ -17,14 +17,14 @@
  * Author:            Ronak J Vanpariya
  * Author URI:        https://vanpariyar.github.io
  * Text Domain:       wppv
- * Domain Path: 	  /languages
+ * Domain Path:       /languages
  * License:           GPL v2 or later
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
-*/
+ */
 
-// Make sure we don't expose any info if called directly
-if ( !function_exists( 'add_action' ) ) {
-	echo __('Hi there!  I\'m just a plugin, not much I can do when called directly.', 'wppv');
+// Make sure we don't expose any info if called directly.
+if ( ! function_exists( 'add_action' ) ) {
+	echo esc_html__('Hi there!  I\'m just a plugin, not much I can do when called directly.', 'wppv');
 	exit;
 }
 
@@ -85,37 +85,61 @@ class WP_Post_Views {
 		if ( !empty($this->options['wppv_api_text_field_0']) ) {
 			if ( $column === 'post_views') {
 				$view_post_meta = get_post_meta(get_the_ID(), 'entry_views', true);
-				echo $view_post_meta;
+				echo esc_html( $view_post_meta );
 			}
 		}
 		
 	}
 
-	public function get_ip_address() 
+	public function get_ip_address()
 	{
-		// check for shared internet/ISP IP
-		if (!empty($_SERVER['HTTP_CLIENT_IP']) && $this->validate_ip($_SERVER['HTTP_CLIENT_IP']))
-			return $_SERVER['HTTP_CLIENT_IP'];
-		// check for IPs passing through proxies
-		if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-			// check if multiple ips exist in var
-			$iplist = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+		// Check for shared internet/ISP IP
+		if (isset($_SERVER['HTTP_CLIENT_IP'])) {
+			$client_ip = filter_var($_SERVER['HTTP_CLIENT_IP'], FILTER_VALIDATE_IP);
+			if (!empty($client_ip) && $this->validate_ip($client_ip)) {
+				return $client_ip;
+			}
+		}
+
+		// Sanitize HTTP_X_FORWARDED_FOR variable
+		$x_forwarded_for = filter_input(INPUT_SERVER, 'HTTP_X_FORWARDED_FOR', FILTER_SANITIZE_STRING);
+		if ($x_forwarded_for !== null) {
+			$iplist = explode(',', $x_forwarded_for);
 			foreach ($iplist as $ip) {
+				$ip = trim($ip); // Remove any leading/trailing spaces
 				if ($this->validate_ip($ip))
 					return $ip;
 			}
 		}
-		if (!empty($_SERVER['HTTP_X_FORWARDED']) && $this->validate_ip($_SERVER['HTTP_X_FORWARDED']))
-			return $_SERVER['HTTP_X_FORWARDED'];
-		if (!empty($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']) && $this->validate_ip($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']))
-			return $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'];
-		if (!empty($_SERVER['HTTP_FORWARDED_FOR']) && $this->validate_ip($_SERVER['HTTP_FORWARDED_FOR']))
-			return $_SERVER['HTTP_FORWARDED_FOR'];
-		if (!empty($_SERVER['HTTP_FORWARDED']) && $this->validate_ip($_SERVER['HTTP_FORWARDED']))
-			return $_SERVER['HTTP_FORWARDED'];
-		// return unreliable ip since all else failed
-		return $_SERVER['REMOTE_ADDR'];
+
+		// Check for IPs passing through proxies
+		$proxy_vars = array(
+			'HTTP_X_FORWARDED',
+			'HTTP_X_CLUSTER_CLIENT_IP',
+			'HTTP_FORWARDED_FOR',
+			'HTTP_FORWARDED'
+		);
+
+		foreach ($proxy_vars as $var) {
+			if (!empty($_SERVER[$var])) {
+				$ip = filter_var($_SERVER[$var], FILTER_VALIDATE_IP);
+				if ($ip !== false && $this->validate_ip($ip))
+					return $ip;
+			}
+		}
+
+		// Sanitize and validate REMOTE_ADDR variable
+		if (isset($_SERVER['REMOTE_ADDR'])) {
+			$remote_addr = filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
+			if ($remote_addr !== false && $this->validate_ip($remote_addr)) {
+				return $remote_addr;
+			}
+		}
+
+		// Return unreliable IP since all else failed
+		return '';
 	}
+
 
 	public function validate_ip($ip) {
 		if (
@@ -144,7 +168,7 @@ class WP_Post_Views {
 
 				$current_ip = $this->get_ip_address();							
 				if( $stored_ip_addresses )
-				{							
+				{
 					if(!in_array($current_ip, $stored_ip_addresses))
 					{
 						$view_post_meta   = get_post_meta(get_the_ID(), $this->meta_key, true);
