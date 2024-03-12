@@ -9,7 +9,7 @@ use Docker To use this Plugin setup. (Not Compulasory)
    $ cd wp-post-views
    $ docker-compose up -d
 ```
-Goto : [localhost:9999/](http://localhost:9999/)
+Goto : [localhost:8080/](http://localhost:8080/)
 
 Live URL: https://wordpress.org/plugins/wp-post-views/
 
