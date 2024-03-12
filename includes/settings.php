@@ -85,13 +85,13 @@ class Wp_post_view_settings
 		/* BUILT IN POST TYPE PAGE AND POST OPTION */
 		?>
 		<label for="">Posts </label>
-		<input type='checkbox' name='wppv_api_settings[wppv_api_post_checkbox_1][post]' value="post" <?php checked( (  'post' == @$checkbox_val['post']), true ); ?>>
-		<label for="">Pages </label><input type='checkbox' name='wppv_api_settings[wppv_api_post_checkbox_1][page]' value="page" <?php checked( (  'page' == @$checkbox_val['page']), true ); ?>>
+		<input type='checkbox' name='wppv_api_settings[wppv_api_post_checkbox_1][post]' value="post" <?php checked( ( isset($checkbox_val['post']) && 'post' == @$checkbox_val['post']), true ); ?>>
+		<label for="">Pages </label><input type='checkbox' name='wppv_api_settings[wppv_api_post_checkbox_1][page]' value="page" <?php checked( (  isset($checkbox_val['page']) && 'page' == @$checkbox_val['page']), true ); ?>>
 		<?php
 		foreach($post_types as $post_type){ 
 			?>
 			<label for=""><?php echo esc_html( $post_type->label );?> </label>
-			<input type="checkbox" name="wppv_api_settings[wppv_api_post_checkbox_1][<?php echo esc_attr( $post_type->name ); ?>]" value="<?php echo esc_attr( $post_type->name ); ?>" <?php checked( ( $post_type->name == @$checkbox_val[$post_type->name] ), true ); ?>>
+			<input type="checkbox" name="wppv_api_settings[wppv_api_post_checkbox_1][<?php echo esc_attr( $post_type->name ); ?>]" value="<?php echo esc_attr( $post_type->name ); ?>" <?php checked( ( isset($checkbox_val[$post_type->name]) && $post_type->name == @$checkbox_val[$post_type->name] ), true ); ?>>
 			<?php
 		}
 	}

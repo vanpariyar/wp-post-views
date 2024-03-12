@@ -29,6 +29,7 @@ Use this shortcode.
 
 TO get site wide count of your post type ( Refresh Hourly due to performance reason ).
 [WPPV-TOTAL-VIEWS-PER-POST-TYPE post_type="post"]
+The total view shortcode not working well with large sites.
 
 
 ### Tutorial
@@ -36,7 +37,7 @@ TO get site wide count of your post type ( Refresh Hourly due to performance rea
 [youtube https://youtu.be/11NH5xOBs68]
 
 ### Development
-* Development happening on GitHub :- https://github.com/vanpariyar/wp-post-views
+* Development happening on GitHub :- [WP Post Views Github](https://github.com/vanpariyar/wp-post-views)
 * Create issue on the GitHub OR Pull request for new feature when new tag added it will automatically deployed.
 
 == Installation ==
@@ -56,9 +57,13 @@ TO get site wide count of your post type ( Refresh Hourly due to performance rea
 
 == Changelog ==
 
+= 1.15 - 12/03/2024 =
+- Complete architecture Changed on How we count views.
+- We are now using ajax to count views. This will ensure the views getting logged even on the caching set. Please while using cache allow ajax function to run. 
+- code changes can be viewed in GitHub -: https://github.com/vanpariyar/wp-post-views/compare/master...28-it-is-sowing-php-errors
+
 = 1.14 - 21/09/2023 =
-- Version Bump to 1.13
-- Merged new changes for PHPCS and PHPCBF. Thanks @kajalgohel for Contributions
+- Version Bump to 1.14
 
 = 1.13 - 16/06/2023 =
 - Version Bump to 1.13
