@@ -4,7 +4,6 @@ services:
 
   wordpress:
     image: wordpress
-    restart: always
     ports:
       - 8080:80
     environment:
@@ -18,7 +17,6 @@ services:
 
   db:
     image: mysql:8.0
-    restart: always
     environment:
       MYSQL_DATABASE: exampledb
       MYSQL_USER: exampleuser
