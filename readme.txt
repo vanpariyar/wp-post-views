@@ -1,6 +1,6 @@
 === Wp Post Views - Wordpress Post views counter ===
 Contributors: vanpariyar, ankitatanti, Brijeshdhanani, piyushmultidots, kajalgohel
-Tags: post views, count wordpress site views, show post views, post view counter, WP Post Views, post view count based on ip  
+Tags: post views, count wordpress site views, show post views, post view counter, WP Post Views
 Requires at least: 5.4
 Requires PHP: 7.4
 Tested up to: 6.4
