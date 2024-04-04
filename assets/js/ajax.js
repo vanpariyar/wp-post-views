@@ -1,18 +1,21 @@
-jQuery(document).ready(function ($) {
-    if( $('body').hasClass('archive')){
-        return;
-    }
-    $.ajax({
-        url: wp_post_views_ajax_object.ajaxurl, // this is the object instantiated in wp_localize_script function
-        type: 'POST',
-        data: {
-            action: 'wppv_counter', // this is the function in your functions.php that will be triggered
-            post_id: wp_post_views_ajax_object.post_id,
-            nonce: wp_post_views_ajax_object.nonce,
-        },
-        success: function (data) {
+document.addEventListener('DOMContentLoaded', function () {
+    if (false == document.body.classList.contains("archive")) {
+        // Get price info with ajax
+        let url = wp_post_views_ajax_object.ajaxurl; // this is the object instantiated in wp_localize_script function);
+
+        let data = new FormData();
+        data.append('action', 'wppv_counter');
+        data.append('post_id', 'custom_art');
+        data.append('nonce', wp_post_views_ajax_object.nonce);
+        
+        let xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            let res = JSON.parse(this.responseText);
             //Do something with the result from server
-            // console.log(data);
+            // console.log(res);
         }
-    });
+
+        xhttp.open("POST", url);
+        xhttp.send(data);
+    }
 });

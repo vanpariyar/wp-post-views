@@ -191,8 +191,8 @@ class WP_Post_Views_Counter_Functions {
         wp_register_script(
             'wp-posts-view-script',
             WP_POST_VIEW_URL.'/assets/js/ajax.js',
-            array('jquery'),
-            false,
+            array(),
+            '1.1',
             true
         );
         wp_enqueue_script('wp-posts-view-script');
