@@ -3,13 +3,19 @@
  * Settings Helper Class
  */
 
-class Wp_post_view_settings
-{
+class Wp_post_view_settings{
 	public static function settings_init(){
 
 		add_action( 'admin_menu', array( 'Wp_post_view_settings','wppv_api_add_admin_menu' ) );
 
 		add_action( 'admin_init', array( 'Wp_post_view_settings','wppv_api_settings_init' ) );
+
+		add_action('admin_enqueue_scripts', array( 'Wp_post_view_settings','admin_enqueue_script_callback'));
+		add_action('enqueue_block_editor_assets', array( 'Wp_post_view_settings','enqueue_block_editor_assets_callback') );
+		add_action( 'admin_init', array( 'Wp_post_view_settings','register_my_setting') );
+		add_action( 'rest_api_init', array( 'Wp_post_view_settings','register_my_setting') );
+
+		// add_action( 'plugin_action_links_' . WP_POST_VIEW_PLUGIN_BASE, array( 'Wp_post_view_settings', 'plugin_settings_link', 10 ) );
 
 	}
 	public static function wppv_activation_hook(){
@@ -101,16 +107,93 @@ class Wp_post_view_settings
 	}
 
 	public static function wppv_api_options_page(  ) {
-		?>
-		<form action='options.php' method='post'>
-			<h2><?php _e("Wp post View All Settings Admin Page", 'wppv'); ?></h2>
-			<?php
-			settings_fields( 'wppvPlugin' );
-			do_settings_sections( 'wppvPlugin' );
-			submit_button();
-			?>
-		</form>
-		<?php
+		echo '<div id="wppv-admin-page"></div>';
 	}
+
+	/**
+	 * Enqueue our script on the settings page,
+	 */
+
+	public static function admin_enqueue_script_callback( $suffix ) {
+		$asset_file_page = WP_POST_VIEW_PLUGIN_PATH . 'build/admin.asset.php';
+		if ( file_exists( $asset_file_page ) && 'settings_page_settings-api-page' === $suffix ) {
+			$assets = require_once $asset_file_page;
+			foreach ( $assets['dependencies'] as $style ) {
+				wp_enqueue_script( $style );
+			}
+			foreach ( $assets['dependencies'] as $style ) {
+				wp_enqueue_style( $style );
+			}
+			wp_enqueue_script(
+				'pre-publish-settings-script',
+				WP_POST_VIEW_URL . 'build/admin.js',
+				array(),
+				$assets['version'],
+				true
+			);
+		}
+	}
+
+	// Enqueue the plugin.
+
+	public static function enqueue_block_editor_assets_callback() {
+		$asset_file_path = WP_POST_VIEW_PLUGIN_PATH . 'build/plugin.asset.php';
+		if ( file_exists( $asset_file_path ) ) {
+			$assets = require_once $asset_file_path;
+			wp_enqueue_script(
+				'pre-publish-plugin-script',
+				WP_POST_VIEW_URL . 'build/plugin.js',
+				array(),
+				$assets['version'],
+				true
+			);
+		}
+	}
+
+	/**
+	 * Register some settings.
+	 */
+	public static function register_my_setting() {
+		register_setting(
+			'pre-publish-checklist',
+			'pre-publish-checklist_data',
+			array(
+				'type'         => 'object',
+				'default'      => array(
+					'wordcount'             => 500,
+					'requiredFeaturedImage' => false,
+					'requiredCategory'      => true,
+				),
+				'show_in_rest' => array(
+					'schema' => array(
+						'type'       => 'object',
+						'properties' => array(
+							'wordCount'             => array(
+								'type' => 'integer',
+							),
+							'requiredFeaturedImage' => array(
+								'type' => 'boolean',
+							),
+							'requiredCategory'      => array(
+								'type' => 'boolean',
+							),
+						),
+					),
+				),
+			)
+		);
+	}
+
+	public static function plugin_settings_link( $links ) : array {
+		// $label = esc_html__( 'Settings', 'wholesome-plugin' );
+		// $slug  = 'wholesome_plugin_settings';
+	
+		// array_unshift( $links, "$label" );
+	
+		return $links;
+	
+	}
+	
+
 }
 ?>

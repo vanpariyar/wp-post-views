@@ -37,6 +37,10 @@ if (!defined('WP_POST_VIEW_PLUGIN_PATH')) {
 	define('WP_POST_VIEW_PLUGIN_PATH', plugin_dir_path(__FILE__));
 }
 
+if ( ! defined( 'WP_POST_VIEW_PLUGIN_BASE' ) ) {
+	define( 'WP_POST_VIEW_PLUGIN_BASE', plugin_basename( __FILE__ ) );
+}
+
 require_once (WP_POST_VIEW_PLUGIN_PATH . '/includes/settings.php');
 
 require_once (WP_POST_VIEW_PLUGIN_PATH . '/includes/shortcodes.php');

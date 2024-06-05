@@ -1,0 +1,16 @@
+{
+  "name": "wp-post-views",
+  "version": "1.0.0",
+  "description": "WordPress Post Views Counter",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@wordpress/scripts": "^28.0.0"
+  }
+}
