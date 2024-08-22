@@ -127,7 +127,7 @@ class Wp_post_view_settings{
 			wp_enqueue_script(
 				'pre-publish-settings-script',
 				WP_POST_VIEW_URL . 'build/admin.js',
-				array(),
+				array( 'wp-api' ),
 				$assets['version'],
 				true
 			);
