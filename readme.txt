@@ -3,8 +3,8 @@ Contributors: vanpariyar, ankitatanti, Brijeshdhanani, piyushmultidots, kajalgoh
 Tags: post views, count wordpress site views, show post views, post view counter, WP Post Views
 Requires at least: 5.4
 Requires PHP: 7.4
-Tested up to: 6.4
-Stable tag: 1.16
+Tested up to: 6.7
+Stable tag: 1.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://paypal.me/vanpariyar
@@ -56,6 +56,10 @@ The total view shortcode not working well with large sites.
 4. screenshot-4
 
 == Changelog ==
+
+= 1.17 - 30/11/2024 =
+- Complete architecture Changed on How we count views.
+- we are using simple Js insted of AJAX thanks to https://github.com/vanpariyar/wp-post-views/pull/33
 
 = 1.15 - 12/03/2024 =
 - Complete architecture Changed on How we count views.
