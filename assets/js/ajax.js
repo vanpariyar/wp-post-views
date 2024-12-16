@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    if ( true == document.body.classList.contains("archive") || true == document.body.classList.contains("home") || true == document.body.classList.contains("blog") ) {
+    if ( true == document.body.classList.contains("archive") || true == document.body.classList.contains("blog") ) {
         return;
     } else {
         let url = wp_post_views_ajax_object.ajaxurl;
