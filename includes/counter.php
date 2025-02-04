@@ -175,7 +175,7 @@ class WP_Post_Views_Counter_Functions {
 			while( $total_count_query->have_posts() ) {
 				$total_count_query->the_post();
 				$view_post_meta   = get_post_meta(get_the_ID(), $this->meta_key, true);
-				$total += $view_post_meta;
+				$total += intval($view_post_meta);
 			}
 		}
 		set_transient( $this->total_views_transient_key.$post_type, $total, $this->total_views_transient_expiration );

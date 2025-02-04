@@ -32,7 +32,9 @@ function wppv_add_custom_shortcode() {
 				'post_type' => 'post',
 			)
 		);
-		return $wp_post_views->get_total_views( $parsed['post_type'] );
+
+		$WP_Post_Views_Counter_Functions = new WP_Post_Views_Counter_Functions();
+		return $WP_Post_Views_Counter_Functions->get_total_views( $parsed['post_type'] );
 	}
 	if( ! shortcode_exists( 'WPPV-TOTAL-VIEWS-PER-POST-TYPE' )){
 		add_shortcode( 'WPPV-TOTAL-VIEWS-PER-POST-TYPE', 'wppv_current_post_view_per_post_type_callback' );
