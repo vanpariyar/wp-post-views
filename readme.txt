@@ -4,7 +4,7 @@ Tags: post views, count wordpress site views, show post views, post view counter
 Requires at least: 5.4
 Requires PHP: 7.4
 Tested up to: 6.7
-Stable tag: 1.19
+Stable tag: 1.20
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://paypal.me/vanpariyar
