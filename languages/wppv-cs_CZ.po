@@ -2,25 +2,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Post Views\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-15 19:10+0000\n"
-"PO-Revision-Date: 2022-07-15 19:29+0000\n"
-"Last-Translator: Сергей\n"
-"Language-Team: Русский\n"
-"Language: ru-RU\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
-"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"POT-Creation-Date: 2025-06-12 13:52+0200\n"
+"PO-Revision-Date: 2025-06-12 14:07+0200\n"
+"Last-Translator: Jan Písařík\n"
+"Language-Team: Čeština\n"
+"Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && n"
+"%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"X-Generator: Poedit 3.1.1\n"
 "X-Loco-Version: 2.6.2; wp-6.0.1\n"
-"X-Domain: wppv"
+"X-Domain: wppv\n"
 
 #: wp-post-views.php:33
 msgid "Hi there!  I'm just a plugin, not much I can do when called directly."
-msgstr ""
-"Всем привет! Я всего лишь плагин, и я мало что могу сделать, когда вызываю "
-"его напрямую."
+msgstr "Ahoj!  Jsem jen zásuvný modul, při přímém volání toho moc nezmůžu."
 
 #. URI of the plugin
 msgid "https://github.com/vanpariyar/wp-post-views"
@@ -36,30 +34,30 @@ msgstr "Ronak J Vanpariya"
 
 #: includes/settings.php:57
 msgid "Select your custom post type"
-msgstr "Выберите типы контента в которых нужно учитывать просмотры"
+msgstr "Vyberte vlastní typ příspěvku"
 
 #: includes/settings.php:39
 msgid "Settings for WP Post Views"
-msgstr "Настройки WP Post Views"
+msgstr "Nastavení pro WP Post Views"
 
 #: includes/settings.php:45
 msgid "Show post views coloumn"
-msgstr "Показывать колонку Views"
+msgstr "Zobrazit sloupec zobrazení příspěvku"
 
 #: includes/settings.php:102
 msgid ""
 "This will show one extra coloumn in Post listing page which is show the "
 "counts"
 msgstr ""
-"Это включит доп. колонку в списке страниц и постов, которая показывает "
-"количество просмотров"
+"Na stránce se seznamem příspěvků se zobrazí jeden další sloupec, který "
+"zobrazuje počty zobrazení"
 
 #: includes/settings.php:51
 msgid ""
 "Views filter on IP (If checked multiple views will not count From same IP)"
 msgstr ""
-"Фильтр просмотров по IP (если установлен чекбокс, то будет учитываться "
-"только один просмотр с одного IP)"
+"Filtrování zobrazení podle IP adresy (Pokud je zaškrtnuto, více zobrazení "
+"se nezapočítá ze stejné IP adresy)"
 
 #. Name of the plugin
 msgid "WP Post Views"
@@ -71,20 +69,20 @@ msgstr "WP Post Views."
 
 #: includes/counter.php:41
 msgid "Views"
-msgstr "Просмотры"
+msgstr "Zobrazení"
 
 #: includes/settings.php:30
 msgid "Wp Post Views Settings"
-msgstr "Настройки Wp Post Views"
+msgstr "Wp Post Views"
 
 #: includes/settings.php:87
 msgid "Posts"
-msgstr "Посты"
+msgstr "Příspěvky"
 
 #: includes/settings.php:89
 msgid "Pages"
-msgstr "Страницы"
+msgstr "Stránky"
 
 #: includes/settings.php:106
 msgid "Wp post View All Settings Admin Page"
-msgstr "Все настройки плагина Wp Post Views"
+msgstr "Všechna nastavení pluginu WP Post Views"
