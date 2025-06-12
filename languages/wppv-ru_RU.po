@@ -68,3 +68,23 @@ msgstr "WP Post Views"
 #. Description of the plugin
 msgid "WP Post Views."
 msgstr "WP Post Views."
+
+#: includes/counter.php:41
+msgid "Views"
+msgstr "Просмотры"
+
+#: includes/settings.php:30
+msgid "Wp Post Views Settings"
+msgstr "Настройки Wp Post Views"
+
+#: includes/settings.php:87
+msgid "Posts"
+msgstr "Посты"
+
+#: includes/settings.php:89
+msgid "Pages"
+msgstr "Страницы"
+
+#: includes/settings.php:106
+msgid "Wp post View All Settings Admin Page"
+msgstr "Все настройки плагина Wp Post Views"
