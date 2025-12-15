@@ -4,7 +4,7 @@ Tags: post views, count wordpress site views, show post views, post view counter
 Requires at least: 5.4
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 1.21
+Stable tag: 1.22
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://paypal.me/vanpariyar
@@ -56,6 +56,9 @@ The total view shortcode not working well with large sites.
 4. screenshot-4
 
 == Changelog ==
+
+= 1.22 - 15/12/2025 =
+- Added PHPUnit testing framework, Composer dependencies, and GitHub Actions for CI.
 
 = 1.21 - 26/09/2025 =
 - Version updates
