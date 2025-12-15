@@ -14,7 +14,7 @@ jobs:
       env:
         #CUSTOM_COMMAND: ''
         #CUSTOM_PATH: ''
-        EXCLUDE_LIST: docker-compose.yml README.md _config.yml
+        EXCLUDE_LIST: docker-compose.yml README.md _config.yml .gitignore .github vendor phpunit.xml.dist phpcs.xml.dist tests composer.json composer.lock composer.json
         SLUG: wp-post-views
         WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
         WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
