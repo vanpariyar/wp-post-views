@@ -16,6 +16,7 @@ WP Post Views is a lightweight and efficient plugin to track and display post vi
 WP Post Views counts the views of your built-in post types (Posts, Pages) and Custom Post Types. It provides multiple ways to display these counts, including a modern Gutenberg block, shortcodes, and PHP functions.
 
 ### Features And Options:
+* **Simple & Easy:** Designed to be simple and easy to understand for everyone.
 * **Gutenberg Block:** A dedicated "Post Views" block for easy placement in your layouts.
 * **IP Filtering:** Option to filter views by IP address to ensure accurate counts.
 * **Post Type Support:** Choose which post types to track in the settings.
