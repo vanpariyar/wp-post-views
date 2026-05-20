@@ -4,7 +4,7 @@ Tags: post views, views, counter, stats, analytics
 Requires at least: 5.4
 Requires PHP: 7.4
 Tested up to: 7.0
-Stable tag: 1.23.0
+Stable tag: 1.23.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://paypal.me/vanpariyar
@@ -81,7 +81,7 @@ Yes, it's designed with performance in mind. It uses efficient database queries 
 
 == Changelog ==
 
-= 1.23.0 - 20/05/2026 =
+= 1.23.1 - 20/05/2026 =
 - **New Feature:** Added a modern Gutenberg block to display post views.
 - **Documentation:** Launched new documentation site using VitePress.
 - **Workflow:** Updated GitHub Actions for automated building and WordPress.org asset deployment.
