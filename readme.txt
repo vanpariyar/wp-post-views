@@ -1,128 +1,77 @@
 === Wp Post Views - Wordpress Post views counter ===
 Contributors: vanpariyar, ankitatanti, Brijeshdhanani, piyushmultidots, kajalgohel
-Tags: post views, count wordpress site views, show post views, post view counter, WP Post Views
+Tags: post views, count wordpress site views, show post views, post view counter, WP Post Views, gutenberg block
 Requires at least: 5.4
 Requires PHP: 7.4
-Tested up to: 6.9
-Stable tag: 1.22
+Tested up to: 7.0
+Stable tag: 1.23.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://paypal.me/vanpariyar
 
-Wordpress Post views counter
+WP Post Views is a lightweight and efficient plugin to track and display post views in WordPress.
 
 == Description ==
 
-Wordpress post views counter counts the view of your Built in post type and Custom post type.
+WP Post Views counts the views of your built-in post types (Posts, Pages) and Custom Post Types. It provides multiple ways to display these counts, including a modern Gutenberg block, shortcodes, and PHP functions.
 
 ### Features And Options:
-* Simple, and easy to understand.
-* Option to filter views on IP address to get accurate post count.
-* Option to select the custom post type.
+* **Gutenberg Block:** A dedicated "Post Views" block for easy placement in your layouts.
+* **IP Filtering:** Option to filter views by IP address to ensure accurate counts.
+* **Post Type Support:** Choose which post types to track in the settings.
+* **Admin Column:** View counts directly in your post/page lists in the admin dashboard.
+* **Performance:** Optimized queries and transient caching for total view counts.
 
-### How to Get Post Count in Frontend
+### How to Display Post Views:
 
-Use this shortcode.
+**1. Gutenberg Block**
+Search for the "Post Views" block in the editor.
 
-[WPPV-TOTAL-VIEWS] 
+**2. Shortcodes**
+- `[WPPV-TOTAL-VIEWS]`: Display the view count for the current post.
+- `[WPPV-TOTAL-VIEWS-PER-POST-TYPE post_type="post"]`: Display total views for a specific post type.
 
-
-TO get site wide count of your post type ( Refresh Hourly due to performance reason ).
-[WPPV-TOTAL-VIEWS-PER-POST-TYPE post_type="post"]
-The total view shortcode not working well with large sites.
-
-
-### Tutorial
-
-[youtube https://youtu.be/11NH5xOBs68]
-
-### Development
-* Development happening on GitHub :- [WP Post Views Github](https://github.com/vanpariyar/wp-post-views)
-* Create issue on the GitHub OR Pull request for new feature when new tag added it will automatically deployed.
+**3. PHP Function**
+`<?php if ( function_exists( 'get_post_view' ) ) { echo get_post_view(); } ?>`
 
 == Installation ==
 
-1. Install the plugin either via the WordPress.org plugin directory, or by uploading the files to your server (in the /wp-content/plugins/ directory).
-2. Activate the  plugin through the 'Plugins' menu in WordPress.
-3. TO make settings Go to User Admin panel Settings->WP Post views
-4. You can select your custom post type as per requirement. 
-
+1. Install the plugin via the WordPress.org plugin directory or by uploading the files to `/wp-content/plugins/`.
+2. Activate the plugin through the 'Plugins' menu.
+3. Configure settings at **Settings > WP Post Views**.
 
 == Screenshots ==
 
-1. screenshot-1
-2. screenshot-2
-3. screenshot-3
-4. screenshot-4
+1. Post Views column in the WordPress admin post list.
+2. Main plugin settings page showing post type selection and IP filtering.
+3. The "Post Views" Gutenberg block in the block inserter.
+4. Customizing the Post Views block in the editor sidebar.
+5. Frontend display of post views on a single blog post.
+6. Using the shortcode to display total views per post type.
+7. Tracking views across different custom post types.
 
 == Changelog ==
 
-= 1.22 - 15/12/2025 =
+= 1.23.0 - 20/05/2026 =
+- **New Feature:** Added a modern Gutenberg block to display post views.
+- **Documentation:** Launched new documentation site using VitePress.
+- **Workflow:** Updated GitHub Actions for automated building and WordPress.org asset deployment.
+- **Assets:** Added dedicated assets for the WordPress.org plugin page.
+- **Testing:** Expanded PHPUnit test suite to include Gutenberg block rendering.
+
+= 1.22.0 - 15/12/2025 =
 - Added PHPUnit testing framework, Composer dependencies, and GitHub Actions for CI.
 
-= 1.21 - 26/09/2025 =
+= 1.21.0 - 26/09/2025 =
 - Version updates
 
-= 1.18 - 16/12/2024 =
+= 1.18.0 - 16/12/2024 =
 - Removed Home page checks from Ajax.
 - Now home page views will be counted
 
-= 1.17 - 30/11/2024 =
+= 1.17.0 - 30/11/2024 =
 - Complete architecture Changed on How we count views.
-- we are using simple Js insted of AJAX thanks to https://github.com/vanpariyar/wp-post-views/pull/33
-
-= 1.15 - 12/03/2024 =
-- Complete architecture Changed on How we count views.
-- We are now using ajax to count views. This will ensure the views getting logged even on the caching set. Please while using cache allow ajax function to run. 
-- code changes can be viewed in GitHub -: https://github.com/vanpariyar/wp-post-views/compare/master...28-it-is-sowing-php-errors
-
-= 1.14 - 21/09/2023 =
-- Version Bump to 1.14
-
-= 1.13 - 16/06/2023 =
-- Version Bump to 1.13
-- Merged new changes for PHPCS and PHPCBF. Thanks @kajalgohel for Contributions
-
-= 1.12 - 23/01/2023 =
-- Version Bump to support 6.2
-
-= 1.11 - 19/10/2022 =
-- Introduction of the new shortcode
-- [WPPV-TOTAL-VIEWS-PER-POST-TYPE post_type="post"]
-
-= 1.10 - 18/07/2022 =
-- Version Bump to support 6.0
-- Added ru_RU ( Russian Translation )
-- fixed https://github.com/vanpariyar/wp-post-views/issues/17
-- https://github.com/vanpariyar/wp-post-views/issues/16
-
-= 1.9 - 23/01/2022 =
-- Version Bump to support 5.9
-
-= 1.8 - 19/12/2021 =
-- Fix `validate_ip()` function creates error.
-
-= 1.6 & 1.7 - 14/07/2020 =
-- Version bump to 5.8
-
-= 1.5 - 15/12/2020 =
-- Enhancement: Fixed IP Related Issue.
-
-= 1.4 - 15/12/2020 =
-- Enhancement: Text Domain Change.
-
-= 1.3 - 26/04/2020 =
-- Enhancement: Text Domain Change.
-
-= 1.2 - 26/04/2020 =
-- Enhancement: Fix the Views Count.
-- Features: Added The Shortcode For Frontend Users.  
-
-= 1.1 - 23/02/2020 =
-- Enhancement: Fix the error when WP_DEBUG is true.
-
-= 1.0 =
-- Innitial: First Version
+- we are using simple Js insted of AJAX.
 
 == Upgrade Notice ==
-Please update Your plugin for better performance and new features.
+Please update for the new Gutenberg block and improved performance.

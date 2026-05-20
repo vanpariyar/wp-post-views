@@ -1,46 +1,44 @@
-![Deploy](https://github.com/vanpariyar/wp-post-views/workflows/Deploy/badge.svg)
+![Deploy](https://github.com/vanpariyar/wp-post-views/actions/workflows/main.yml/badge.svg)
+![Test and Lint](https://github.com/vanpariyar/wp-post-views/actions/workflows/test.yml/badge.svg)
 
-# wp-post-views
+# WP Post Views
 
-use Docker To use this Plugin setup. (Not Compulasory)
+Lightweight and efficient post views counter for WordPress.
 
+## Features
+- **Gutenberg Block:** Easily display post views using the dedicated "Post Views" block.
+- **Shortcodes:** Support for `[WPPV-TOTAL-VIEWS]` and `[WPPV-TOTAL-VIEWS-PER-POST-TYPE]`.
+- **IP Filtering:** Option to filter views by IP address for more accurate counts.
+- **Custom Post Types:** Support for tracking views on posts, pages, and custom post types.
+- **Admin Column:** View count column in the WordPress admin post list.
+- **Performance Optimized:** Uses transients for total counts and efficient database queries.
+- **Developer Friendly:** Clean code with PHPUnit tests and GitHub Actions CI.
+
+## Documentation
+Full documentation is available at [https://vanpariyar.github.io/wp-post-views/](https://vanpariyar.github.io/wp-post-views/)
+
+## Installation
+1. Upload the plugin to your `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Configure settings under **Settings > WP Post Views**.
+
+## Development
+This plugin is developed with modern tools:
+- **Gutenberg Block:** Built with `@wordpress/scripts`.
+- **Testing:** PHPUnit for PHP and Linting for JS/CSS.
+- **CI/CD:** GitHub Actions for automated testing and deployment to WordPress.org.
+
+### Local Setup
+```bash
+git clone https://github.com/vanpariyar/wp-post-views.git
+cd wp-post-views
+npm install
+npm run build
 ```
-   $ git clone https://github.com/vanpariyar/wp-post-views.git
-   $ cd wp-post-views
-   $ docker-compose up -d
-```
-Goto : [localhost:8080/](http://localhost:8080/)
 
-Live URL: https://wordpress.org/plugins/wp-post-views/
+## Credits
+Originally created by [Ronak J Vanpariya](https://github.com/vanpariyar).
+Special thanks to [AnkitaTanti](https://github.com/AnkitaTanti) for original contributions.
 
-This is the simple plugin that counts the views of the your wordpress website and store the views in the database
-
-For this repository i would like to give full credits to [AnkitaTanti](https://github.com/AnkitaTanti).
-
-Contribution is highly appriciated.
-
-### Contribution needed below
-
-- Dynamic Block for the post views for gutenberg
-- Language Translations
-
-
-![banner-wp-post-views](https://user-images.githubusercontent.com/26689210/81412482-8e17c880-9161-11ea-86cc-60e2c1f3fa9a.png)
-
-
-### For contribution make the saperate branch.
-NOTE : Make sure we are Developing the Plugin.:sweat_smile:
-Please Don't upload Whole wordpress setup.
-
-## Features:
-- We have option to show views count in the post coloumn.
-- (You can disable this)All views are filterd with IP address. To just make sure get right count
--Support for the Custom post type by selecting menually in settings.
-
-INSTALLATION :
-
-1) Upload the plugin in to your wp-content > Plugins folder
-2) You can change plugin settings in Admin panel > Settings > Wp Post View Settings
-3) There are some options are by default selected for you but you can Change it. 
-
-That's it Thanks.
+## License
+GPL-2.0-or-later

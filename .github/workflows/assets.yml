@@ -1,0 +1,24 @@
+name: Deploy Assets
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '.wporg_assets/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy Assets to WordPress.org
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: WordPress.org Assets Deploy
+        uses: 10up/action-wordpress-plugin-asset-update@stable
+        env:
+          SVN_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
+          SLUG: wp-post-views
+          ASSETS_DIR: .wporg_assets
+          IGNORE_OTHER_FILES: true

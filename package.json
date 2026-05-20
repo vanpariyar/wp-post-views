@@ -1,0 +1,20 @@
+{
+  "name": "wp-post-views",
+  "version": "1.22.0",
+  "private": true,
+  "scripts": {
+    "build": "wp-scripts build",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "packages-update": "wp-scripts packages-update",
+    "start": "wp-scripts start",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^32.0.0",
+    "vitepress": "^1.6.4"
+  }
+}
