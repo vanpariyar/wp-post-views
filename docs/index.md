@@ -6,7 +6,7 @@ hero:
   text: Lightweight Post Views Counter for WordPress
   tagline: Simple, efficient, and privacy-friendly post views tracking.
   image:
-    src: https://vanpariyar.github.io/assets/img/logo.png
+    src: /icon-256x256.png
     alt: WP Post Views Logo
   actions:
     - theme: brand
