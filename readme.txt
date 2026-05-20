@@ -1,6 +1,6 @@
 === Wp Post Views - Wordpress Post views counter ===
 Contributors: vanpariyar, ankitatanti, Brijeshdhanani, piyushmultidots, kajalgohel
-Tags: post views, count wordpress site views, show post views, post view counter, WP Post Views
+Tags: post views, views, counter, stats, analytics
 Requires at least: 5.4
 Requires PHP: 7.4
 Tested up to: 7.0
@@ -48,6 +48,26 @@ Search for the "Post Views" block in the editor.
 1. Install the plugin via the WordPress.org plugin directory or by uploading the files to `/wp-content/plugins/`.
 2. Activate the plugin through the 'Plugins' menu.
 3. Configure settings at **Settings > WP Post Views**.
+
+== Frequently Asked Questions ==
+
+= Does it work with caching plugins? =
+Yes. WP Post Views uses a lightweight JavaScript-based tracking method to ensure views are counted even when your site is served via a caching plugin (like WP Rocket, W3 Total Cache, etc.).
+
+= Can I track views for custom post types? =
+Absolutely. You can select which post types to track in the plugin settings page.
+
+= How can I exclude my own views? =
+The plugin includes an IP filtering feature. You can enter your IP address in the settings to prevent your own visits from being counted.
+
+= How do I display the view count? =
+You have three options:
+1. Use the "Post Views" Gutenberg block.
+2. Use the `[WPPV-TOTAL-VIEWS]` shortcode.
+3. Use the `get_post_view()` PHP function in your theme templates.
+
+= Is it lightweight? =
+Yes, it's designed with performance in mind. It uses efficient database queries and transient caching for aggregate counts to minimize server load.
 
 == Screenshots ==
 
