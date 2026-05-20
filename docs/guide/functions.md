@@ -23,5 +23,5 @@ if ( function_exists( 'get_post_view' ) ) {
 
 The plugin tracks views using a lightweight JavaScript approach to ensure compatibility with most caching plugins.
 
-![Tracking Logic](/screenshot-7.png)
+![Tracking Logic](/screenshot-1.png)
 *Tracking views across different custom post types.*

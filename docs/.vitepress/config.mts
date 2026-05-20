@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: '/wp-post-views/',
+  cleanUrls: true,
   title: "WP Post Views",
   description: "Lightweight Post Views Counter for WordPress",
   themeConfig: {

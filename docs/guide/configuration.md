@@ -24,11 +24,11 @@ WP Post Views comes with a modern Gutenberg block that you can use to display vi
 2. Search for **Post Views**.
 3. Insert the block into your post or page.
 
-![Gutenberg Block](/screenshot-3.png)
+![Gutenberg Block](/screenshot-6.png)
 *The "Post Views" Gutenberg block in the block inserter.*
 
 ### Customizing the Block
 You can customize the appearance of the block in the editor sidebar, such as changing the prefix text (e.g., "Total Views:") or styling.
 
-![Customizing Block](/screenshot-4.png)
+![Customizing Block](/screenshot-7.png)
 *Customizing the Post Views block in the editor sidebar.*

@@ -21,7 +21,7 @@ You can install WP Post Views using one of the following methods:
 
 Once activated, the plugin starts tracking views immediately for your posts and pages. You can see the view counts directly in your admin post list.
 
-![Post Views Admin Column](/screenshot-1.png)
+![Post Views Admin Column](/screenshot-3.png)
 *Post Views column in the WordPress admin post list.*
 
 ## Configuration
