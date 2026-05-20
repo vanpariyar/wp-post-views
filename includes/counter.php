@@ -29,6 +29,9 @@ class WP_Post_Views_Counter_Functions {
 		add_filter( 'manage_pages_columns', array( $this, 'wppv_posts_column_views' ) );
 		add_action( 'manage_posts_custom_column', array( $this, 'wppv_posts_custom_column_views' ) );
 		add_action( 'manage_pages_custom_column', array( $this, 'wppv_posts_custom_column_views' ) );
+		add_filter( 'manage_edit-post_sortable_columns', array( $this, 'wppv_posts_sortable_column_views' ) );
+		add_filter( 'manage_edit-page_sortable_columns', array( $this, 'wppv_posts_sortable_column_views' ) );
+		add_action( 'pre_get_posts', array( $this, 'wppv_posts_views_orderby' ) );
 		add_action( 'wp_ajax_wppv_counter', array( $this, 'ajax_functions' ) );
 		add_action( 'wp_ajax_nopriv_wppv_counter', array( $this, 'ajax_functions' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
@@ -189,7 +192,7 @@ class WP_Post_Views_Counter_Functions {
 	public function register_scripts() {
 		wp_register_script(
 			'wp-posts-view-script',
-			WP_POST_VIEW_URL . '/assets/js/ajax.js',
+			WP_POST_VIEW_URL . 'assets/js/ajax.js',
 			array(),
 			'1.1',
 			true
@@ -226,5 +229,35 @@ class WP_Post_Views_Counter_Functions {
 		$this->counter( $post_id );
 		wp_send_json_success( '1' );
 		// wp_die(); // ajax call must die to avoid trailing 0 in your response
+	}
+
+	/**
+	 * Make the post views column sortable.
+	 *
+	 * @param array $columns Sortable columns.
+	 * @return array
+	 */
+	public function wppv_posts_sortable_column_views( $columns ) {
+		$columns['post_views'] = 'post_views';
+		return $columns;
+	}
+
+	/**
+	 * Handle the orderby for post views.
+	 *
+	 * @param WP_Query $query The query object.
+	 * @return void
+	 */
+	public function wppv_posts_views_orderby( $query ) {
+		if ( ! is_admin() || ! $query->is_main_query() ) {
+			return;
+		}
+
+		$orderby = $query->get( 'orderby' );
+
+		if ( 'post_views' === $orderby ) {
+			$query->set( 'meta_key', 'entry_views' );
+			$query->set( 'orderby', 'meta_value_num' );
+		}
 	}
 }

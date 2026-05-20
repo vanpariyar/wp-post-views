@@ -2,3 +2,7 @@
 vendor
 node_modules
 build
+
+# VitePress
+docs/.vitepress/dist
+docs/.vitepress/cache
