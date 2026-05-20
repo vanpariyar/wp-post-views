@@ -34,6 +34,14 @@ Search for the "Post Views" block in the editor.
 **3. PHP Function**
 `<?php if ( function_exists( 'get_post_view' ) ) { echo get_post_view(); } ?>`
 
+### Tutorial
+
+[youtube https://youtu.be/11NH5xOBs68]
+
+### Development
+* Development happening on GitHub :- [WP Post Views Github](https://github.com/vanpariyar/wp-post-views)
+* Create issue on the GitHub OR Pull request for new feature when new tag added it will automatically deployed.
+
 == Installation ==
 
 1. Install the plugin via the WordPress.org plugin directory or by uploading the files to `/wp-content/plugins/`.
