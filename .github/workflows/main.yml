@@ -7,14 +7,18 @@ jobs:
   tag:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v4
+    - name: Install dependencies
+      run: npm install
+    - name: Build block
+      run: npm run build
     - name: WordPress Plugin Deploy
       #see rtCamp  repo for the 
       uses: rtCamp/action-wordpress-org-plugin-deploy@master
       env:
         #CUSTOM_COMMAND: ''
         #CUSTOM_PATH: ''
-        EXCLUDE_LIST: docker-compose.yml README.md _config.yml .gitignore .github vendor phpunit.xml.dist phpcs.xml.dist tests composer.json composer.lock composer.json
+        EXCLUDE_LIST: docker-compose.yml README.md _config.yml .gitignore .github vendor phpunit.xml.dist phpcs.xml.dist tests composer.json composer.lock .wporg_assets docs package.json package-lock.json src node_modules
         SLUG: wp-post-views
         WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
         WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}

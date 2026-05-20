@@ -11,9 +11,10 @@
  * Plugin Name:       WP Post Views - Wordpress Post views counter
  * Plugin URI:        https://github.com/vanpariyar/wp-post-views
  * Description:       WP Post Views - Wordpress Post views counter
- * Version:           1.22
+ * Version:           1.23.0
  * Requires at least: 5.4
  * Requires PHP:      7.4
+ * Tested up to:      7.0
  * Author URI:        https://vanpariyar.github.io
  * Text Domain:       wp-post-views
  * Domain Path:       /languages
@@ -41,6 +42,8 @@ require_once WP_POST_VIEW_PLUGIN_PATH . '/includes/settings.php';
 require_once WP_POST_VIEW_PLUGIN_PATH . '/includes/shortcodes.php';
 
 require_once WP_POST_VIEW_PLUGIN_PATH . '/includes/counter.php';
+
+require_once WP_POST_VIEW_PLUGIN_PATH . '/includes/blocks.php';
 
 register_activation_hook( __FILE__, array( 'Wp_post_view_settings', 'wppv_activation_hook' ) );
 

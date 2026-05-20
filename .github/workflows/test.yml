@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Install PHP
       uses: shivammathur/setup-php@v2
@@ -24,6 +24,18 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
+
+    - name: Install Node dependencies
+      run: npm install
+
+    - name: Build block
+      run: npm run build
+
+    - name: Run JS Lint
+      run: npm run lint:js
+
+    - name: Run CSS Lint
+      run: npm run lint:css
 
     - name: Run PHPCS
       run: vendor/bin/phpcs -q --report=checkstyle | cs2pr
