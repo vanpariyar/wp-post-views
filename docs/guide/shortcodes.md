@@ -29,5 +29,5 @@ Displays the aggregate view count for all posts within a specific post type.
 [WPPV-TOTAL-VIEWS-PER-POST-TYPE post_type="product"]
 ```
 
-![Shortcode Usage](/screenshot-6.png)
+![Shortcode Usage](/screenshot-7.png)
 *Using the shortcode to display total views per post type.*
