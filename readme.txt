@@ -1,10 +1,10 @@
-=== Wp Post Views - Wordpress Post views counter ===
+=== Wp Post Views - WordPress Post views counter ===
 Contributors: vanpariyar, ankitatanti, Brijeshdhanani, piyushmultidots, kajalgohel
 Tags: post views, views, counter, stats, analytics
 Requires at least: 5.4
 Requires PHP: 7.4
-Tested up to: 7.0
-Stable tag: 1.23.1
+Tested up to: 7.1
+Stable tag: 1.23.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://paypal.me/vanpariyar

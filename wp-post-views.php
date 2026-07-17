@@ -8,10 +8,10 @@
  * @license           GPL-2.0-or-later
  *
  * @wordpress-plugin
- * Plugin Name:       WP Post Views - Wordpress Post views counter
+ * Plugin Name:       WP Post Views - WordPress Post views counter
  * Plugin URI:        https://github.com/vanpariyar/wp-post-views
- * Description:       WP Post Views - Wordpress Post views counter
- * Version:           1.23.1
+ * Description:       WP Post Views - WordPress Post views counter
+ * Version:           1.23.2
  * Requires at least: 5.4
  * Requires PHP:      7.4
  * Tested up to:      7.0
