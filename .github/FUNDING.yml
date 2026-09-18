@@ -2,4 +2,8 @@
 
 patreon: vanpariyar
 ko_fi: vanpariyar
-custom: ['https://www.buymeacoffee.com/vanpariyar', 'https://paypal.me/vanpariyar?locale.x=en_GB']
+custom:
+    [
+        'https://www.buymeacoffee.com/vanpariyar',
+        'https://paypal.me/vanpariyar?locale.x=en_GB',
+    ]

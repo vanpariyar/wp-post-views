@@ -1,18 +1,18 @@
 name: 'Setup Node and Install Dependencies'
 description: 'Sets up Node.js, caches npm, and installs dependencies'
 inputs:
-  node-version:
-    description: 'Node version'
-    required: false
-    default: '20'
+    node-version:
+        description: 'Node version'
+        required: false
+        default: '20'
 runs:
-  using: "composite"
-  steps:
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ inputs.node-version }}
-        cache: 'npm'
-    - name: Install Node dependencies
-      run: npm ci
-      shell: bash
+    using: 'composite'
+    steps:
+        - name: Setup Node
+          uses: actions/setup-node@v4
+          with:
+              node-version: ${{ inputs.node-version }}
+              cache: 'npm'
+        - name: Install Node dependencies
+          run: npm ci
+          shell: bash

@@ -161,9 +161,12 @@ class WP_Post_Views_Counter_Functions {
 	private function count_total_view( $post_type = 'post' ) {
 		$total = 0;
 
-		if ( $total = get_transient( $this->total_views_transient_key . $post_type ) ) {
+		$total = get_transient( $this->total_views_transient_key . $post_type );
+		if ( false !== $total ) {
 			return $total;
 		}
+
+		$total = 0;
 
 		$arguments         = array(
 			'post_type'      => $post_type,

@@ -10,7 +10,7 @@ function wppv_add_custom_shortcode() {
 	function wppv_current_post_view_callback( $atts = array(), $content = '' ) {
 		$meta_key       = 'entry_views';
 		$view_post_meta = get_post_meta( get_the_ID(), $meta_key, true );
-		return $view_post_meta;
+		return ! empty( $view_post_meta ) ? $view_post_meta : '0';
 	}
 	if ( ! shortcode_exists( 'WPPV-TOTAL-VIEWS' ) ) {
 		add_shortcode( 'WPPV-TOTAL-VIEWS', 'wppv_current_post_view_callback' );

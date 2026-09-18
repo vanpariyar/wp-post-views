@@ -1,25 +1,25 @@
 {
-    "$schema": "https://playground.wordpress.net/blueprint-schema.json",
-    "landingPage": "/wp-admin/options-general.php?page=settings-api-page",
-    "preferredVersions": {
-        "php": "7.4",
-        "wp": "latest"
-    },
-    "steps": [
-        {
-            "step": "login",
-            "username": "admin",
-            "password": "password"
-        },
-        {
-            "step": "installPlugin",
-            "pluginZipFile": {
-                "resource": "wordpress.org/plugins",
-                "slug": "wp-post-views"
-            },
-            "options": {
-                "activate": true
-            }
-        }
-    ]
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"landingPage": "/wp-admin/options-general.php?page=settings-api-page",
+	"preferredVersions": {
+		"php": "7.4",
+		"wp": "latest"
+	},
+	"steps": [
+		{
+			"step": "login",
+			"username": "admin",
+			"password": "password"
+		},
+		{
+			"step": "installPlugin",
+			"pluginZipFile": {
+				"resource": "wordpress.org/plugins",
+				"slug": "wp-post-views"
+			},
+			"options": {
+				"activate": true
+			}
+		}
+	]
 }

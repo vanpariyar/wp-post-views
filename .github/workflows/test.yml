@@ -1,73 +1,73 @@
 name: Test and Lint
 
 on:
-  push:
-    branches:
-      - '**'
-  pull_request:
+    push:
+        branches:
+            - '**'
+    pull_request:
 
 jobs:
-  lint-js:
-    name: Lint JS and CSS
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    lint-js:
+        name: Lint JS and CSS
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-    - name: Setup Node and Install Dependencies
-      uses: ./.github/actions/setup-node
+            - name: Setup Node and Install Dependencies
+              uses: ./.github/actions/setup-node
 
-    - name: Build block
-      run: npm run build
+            - name: Build block
+              run: npm run build
 
-    - name: Run JS Lint
-      run: npm run lint:js
+            - name: Run JS Lint
+              run: npm run lint:js
 
-    - name: Run CSS Lint
-      run: npm run lint:css
+            - name: Run CSS Lint
+              run: npm run lint:css
 
-  lint-php:
-    name: Lint PHP
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    lint-php:
+        name: Lint PHP
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-    - name: Install PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '7.4'
-        tools: composer, cs2pr
+            - name: Install PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '7.4'
+                  tools: composer, cs2pr
 
-    - name: Install Composer dependencies
-      uses: ramsey/composer-install@v3
+            - name: Install Composer dependencies
+              uses: ramsey/composer-install@v3
 
-    - name: Run PHPCS
-      run: vendor/bin/phpcs -q --report=checkstyle | cs2pr
+            - name: Run PHPCS
+              run: vendor/bin/phpcs -q --report=checkstyle | cs2pr
 
-  test-php:
-    name: Test PHP
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    test-php:
+        name: Test PHP
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
 
-    - name: Install PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '7.4'
-        extensions: mbstring, intl
-        coverage: none
-        tools: composer
+            - name: Install PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '7.4'
+                  extensions: mbstring, intl
+                  coverage: none
+                  tools: composer
 
-    - name: Install Composer dependencies
-      uses: ramsey/composer-install@v3
+            - name: Install Composer dependencies
+              uses: ramsey/composer-install@v3
 
-    - name: Setup WordPress Test Suite
-      run: |
-        curl -O https://raw.githubusercontent.com/wp-cli/scaffold-command/main/templates/install-wp-tests.sh
-        chmod +x install-wp-tests.sh
-        bash install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
+            - name: Setup WordPress Test Suite
+              run: |
+                  curl -O https://raw.githubusercontent.com/wp-cli/scaffold-command/main/templates/install-wp-tests.sh
+                  chmod +x install-wp-tests.sh
+                  bash install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
 
-    - name: Run PHPUnit
-      run: vendor/bin/phpunit
+            - name: Run PHPUnit
+              run: vendor/bin/phpunit
