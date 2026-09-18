@@ -7,26 +7,15 @@ on:
   pull_request:
 
 jobs:
-  test:
+  lint-js:
+    name: Lint JS and CSS
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Install PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '7.4'
-        extensions: mbstring, intl
-        coverage: none
-        tools: composer, cs2pr
-
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
-
-    - name: Install Node dependencies
-      run: npm install
+    - name: Setup Node and Install Dependencies
+      uses: ./.github/actions/setup-node
 
     - name: Build block
       run: npm run build
@@ -37,12 +26,46 @@ jobs:
     - name: Run CSS Lint
       run: npm run lint:css
 
+  lint-php:
+    name: Lint PHP
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+        tools: composer, cs2pr
+
+    - name: Install Composer dependencies
+      uses: ramsey/composer-install@v3
+
     - name: Run PHPCS
       run: vendor/bin/phpcs -q --report=checkstyle | cs2pr
 
+  test-php:
+    name: Test PHP
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+        extensions: mbstring, intl
+        coverage: none
+        tools: composer
+
+    - name: Install Composer dependencies
+      uses: ramsey/composer-install@v3
+
     - name: Setup WordPress Test Suite
       run: |
-        curl -O https://raw.githubusercontent.com/wp-cli/wp-cli/master/templates/install-wp-tests.sh
+        curl -O https://raw.githubusercontent.com/wp-cli/scaffold-command/main/templates/install-wp-tests.sh
         chmod +x install-wp-tests.sh
         bash install-wp-tests.sh wordpress_test root '' 127.0.0.1 latest
 

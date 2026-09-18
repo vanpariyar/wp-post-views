@@ -52,9 +52,9 @@ class Test_Blocks extends WP_UnitTestCase {
 
 		$output = $this->blocks->render_post_views_block( array(), '' );
 
-		$this->assertContains( 'Post Views:', $output );
-		$this->assertContains( '1,234', $output );
-		$this->assertContains( 'wp-post-views-count', $output );
+		$this->assertStringContainsString( 'Post Views:', $output );
+		$this->assertStringContainsString( '1,234', $output );
+		$this->assertStringContainsString( 'wp-post-views-count', $output );
 	}
 
 	/**
@@ -68,7 +68,7 @@ class Test_Blocks extends WP_UnitTestCase {
 
 		$output = $this->blocks->render_post_views_block( array(), '' );
 
-		$this->assertContains( 'Post Views:', $output );
-		$this->assertContains( '0', $output );
+		$this->assertStringContainsString( 'Post Views:', $output );
+		$this->assertStringContainsString( '0', $output );
 	}
 }

@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Install dependencies
-      run: npm install
+    - name: Setup Node and Install Dependencies
+      uses: ./.github/actions/setup-node
     - name: Build block
       run: npm run build
     - name: WordPress Plugin Deploy
