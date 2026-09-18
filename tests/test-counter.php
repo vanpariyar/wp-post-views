@@ -22,13 +22,13 @@ class Test_Counter extends WP_UnitTestCase {
 	 */
 	public function setUp() {
 		parent::setUp();
-		
+
 		// Mock options to ensure the counter logic knows which post types to track.
 		$options = array(
 			'wppv_api_post_checkbox_1' => array( 'post' => 'post' ),
 		);
 		update_option( 'wppv_api_settings', $options );
-		
+
 		$this->counter = new WP_Post_Views_Counter_Functions();
 	}
 
@@ -47,7 +47,7 @@ class Test_Counter extends WP_UnitTestCase {
 	 */
 	public function test_counter_increments_views() {
 		$post_id = $this->factory->post->create();
-		
+
 		// Initial view count should be empty or 0.
 		$this->assertEmpty( get_post_meta( $post_id, 'entry_views', true ) );
 

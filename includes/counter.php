@@ -127,7 +127,7 @@ class WP_Post_Views_Counter_Functions {
 	public function counter( $post_id ) {
 		$post                = get_post( $post_id );
 		$stored_ip_addresses = 0;
-		$selected_type = isset( $this->options['wppv_api_post_checkbox_1'] ) && is_array( $this->options['wppv_api_post_checkbox_1'] ) ? $this->options['wppv_api_post_checkbox_1'] : array();
+		$selected_type       = isset( $this->options['wppv_api_post_checkbox_1'] ) && is_array( $this->options['wppv_api_post_checkbox_1'] ) ? $this->options['wppv_api_post_checkbox_1'] : array();
 
 		if ( is_object( $post ) && in_array( $post->post_type, $selected_type ) ) {
 			if ( ! empty( $this->options['wppv_api_text_field_1'] ) ) {

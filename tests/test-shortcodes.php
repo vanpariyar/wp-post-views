@@ -33,11 +33,11 @@ class Test_Shortcodes extends WP_UnitTestCase {
 	 */
 	public function test_shortcode_total_views_per_type() {
 		$defaults = array( 'post_type' => 'post' );
-		
+
 		// Create posts with views.
 		$post_id_1 = $this->factory->post->create( $defaults );
 		update_post_meta( $post_id_1, 'entry_views', 50 );
-		
+
 		$post_id_2 = $this->factory->post->create( $defaults );
 		update_post_meta( $post_id_2, 'entry_views', 50 );
 

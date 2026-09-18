@@ -33,7 +33,7 @@ class Test_Blocks extends WP_UnitTestCase {
 			$this->markTestSkipped( 'register_block_type function does not exist.' );
 		}
 
-		// Since we added a check for file_exists in register_blocks, 
+		// Since we added a check for file_exists in register_blocks,
 		// we can't easily test the registration itself without a build directory.
 		// But we can test the render callback logic.
 		$this->assertTrue( method_exists( $this->blocks, 'render_post_views_block' ) );
@@ -47,7 +47,7 @@ class Test_Blocks extends WP_UnitTestCase {
 		update_post_meta( $post_id, 'entry_views', 1234 );
 
 		// Set the global post.
-		$post = get_post( $post_id );
+		$post            = get_post( $post_id );
 		$GLOBALS['post'] = $post;
 
 		$output = $this->blocks->render_post_views_block( array(), '' );

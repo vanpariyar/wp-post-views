@@ -42,7 +42,7 @@ class WP_Post_Views_Blocks {
 	/**
 	 * Render callback for the Post Views block.
 	 *
-	 * @param array $attributes Block attributes.
+	 * @param array  $attributes Block attributes.
 	 * @param string $content Block content.
 	 * @return string
 	 */
