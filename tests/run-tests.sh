@@ -14,11 +14,11 @@ sleep 15
 curl -O https://raw.githubusercontent.com/wp-cli/scaffold-command/main/templates/install-wp-tests.sh
 chmod +x install-wp-tests.sh
 
-docker run --rm --network host -v "$PROJECT_ROOT":/app -w /app php:7.4-cli bash -c "
+docker run --rm --link wp-db-test:mysql -v "$PROJECT_ROOT":/app -w /app php:8.1-cli bash -c "
 apt-get update && apt-get install -y subversion default-mysql-client default-libmysqlclient-dev && docker-php-ext-install mysqli pdo pdo_mysql && \
 curl -sS https://getcomposer.org/installer | php && \
 php composer.phar install && \
-bash install-wp-tests.sh wordpress_test root '' 127.0.0.1:33066 latest && \
+bash install-wp-tests.sh wordpress_test root '' mysql:3306 latest && \
 vendor/bin/phpunit
 "
 
