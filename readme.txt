@@ -4,7 +4,7 @@ Tags: post views, views, counter, stats, analytics
 Requires at least: 5.4
 Requires PHP: 7.4
 Tested up to: 7.1
-Stable tag: 1.23.3
+Stable tag: 1.23.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://paypal.me/vanpariyar
@@ -80,6 +80,10 @@ Yes, it's designed with performance in mind. It uses efficient database queries 
 7. Tracking views across different custom post types.
 
 == Changelog ==
+
+= 1.23.4 - 19/September/2026 =
+- Fixed PHP test in github Actions
+- Added Languages
 
 = 1.23.1 - 20/05/2026 =
 - **New Feature:** Added a modern Gutenberg block to display post views.
