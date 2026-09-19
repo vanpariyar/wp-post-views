@@ -63,6 +63,9 @@ jobs:
             - name: Install Composer dependencies
               uses: ramsey/composer-install@v3
 
+            - name: Start MySQL service
+              run: sudo systemctl start mysql
+
             - name: Setup WordPress Test Suite
               run: |
                   curl -O https://raw.githubusercontent.com/wp-cli/scaffold-command/main/templates/install-wp-tests.sh
