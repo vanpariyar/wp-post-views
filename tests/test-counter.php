@@ -36,8 +36,9 @@ class Test_Counter extends WP_UnitTestCase {
 	 * Test validating IP addresses.
 	 */
 	public function test_validate_ip() {
-		$this->assertTrue( $this->counter->validate_ip( '127.0.0.1' ) );
-		$this->assertTrue( $this->counter->validate_ip( '192.168.1.1' ) );
+		$this->assertFalse( $this->counter->validate_ip( '127.0.0.1' ) );
+		$this->assertFalse( $this->counter->validate_ip( '192.168.1.1' ) );
+		$this->assertTrue( $this->counter->validate_ip( '8.8.8.8' ) );
 		$this->assertFalse( $this->counter->validate_ip( 'invalid-ip' ) );
 		$this->assertFalse( $this->counter->validate_ip( '256.256.256.256' ) );
 	}
