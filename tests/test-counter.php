@@ -20,7 +20,7 @@ class Test_Counter extends WP_UnitTestCase {
 	/**
 	 * Setup.
 	 */
-	public function setUp() {
+	public function setUp(): void {
 		parent::setUp();
 
 		// Mock options to ensure the counter logic knows which post types to track.

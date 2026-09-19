@@ -20,7 +20,7 @@ class Test_Blocks extends WP_UnitTestCase {
 	/**
 	 * Setup.
 	 */
-	public function setUp() {
+	public function setUp(): void {
 		parent::setUp();
 		$this->blocks = new WP_Post_Views_Blocks();
 	}
