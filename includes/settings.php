@@ -87,9 +87,9 @@ class Wp_post_view_settings {
 		$post_types   = get_post_types( $args, 'objects' );
 		/* BUILT IN POST TYPE PAGE AND POST OPTION */
 		?>
-		<label for="">Posts </label>
+		<label for=""><?php esc_html_e( 'Posts', 'wp-post-views' ); ?> </label>
 		<input type='checkbox' name='wppv_api_settings[wppv_api_post_checkbox_1][post]' value="post" <?php checked( ( isset( $checkbox_val['post'] ) && 'post' == @$checkbox_val['post'] ), true ); ?>>
-		<label for="">Pages </label><input type='checkbox' name='wppv_api_settings[wppv_api_post_checkbox_1][page]' value="page" <?php checked( ( isset( $checkbox_val['page'] ) && 'page' == @$checkbox_val['page'] ), true ); ?>>
+		<label for=""><?php esc_html_e( 'Pages', 'wp-post-views' ); ?> </label><input type='checkbox' name='wppv_api_settings[wppv_api_post_checkbox_1][page]' value="page" <?php checked( ( isset( $checkbox_val['page'] ) && 'page' == @$checkbox_val['page'] ), true ); ?>>
 		<?php
 		foreach ( $post_types as $post_type ) {
 			?>

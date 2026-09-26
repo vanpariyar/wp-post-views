@@ -40,7 +40,7 @@ class WP_Post_Views_Counter_Functions {
 	public function wppv_posts_column_views( $columns ) {
 
 		if ( ! empty( $this->options['wppv_api_text_field_0'] ) ) {
-			$columns['post_views'] = 'Views';
+			$columns['post_views'] = __( 'Views', 'wp-post-views' );
 		}
 		return $columns;
 	}
